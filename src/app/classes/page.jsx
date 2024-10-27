@@ -1,7 +1,7 @@
 import React from "react";
 
 const page = () => {
-  return <div>only amdin !</div>;
+  return <div>classes page</div>;
 };
 
 export default page;

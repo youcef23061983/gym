@@ -1,6 +1,9 @@
 "use client";
 import { ReactLenis } from "lenis/dist/lenis-react";
-import { motion } from "framer-motion";
+import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
+import React, { useRef } from "react";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import { FiArrowRight } from "react-icons/fi";
 
 const Home = () => {
   return (
@@ -13,6 +16,9 @@ const Home = () => {
       >
         <FrontImage />
       </ReactLenis>
+      <Counter />
+      <Features />
+      <About />
     </div>
   );
 };
@@ -41,71 +47,230 @@ const FrontImage = () => {
           initial="hidden"
           animate="visible"
           className="frontTitle"
+          viewport={{ once: true }}
         >
-          hi
+          Puissance et Passion{" "}
         </motion.h2>
-        <motion.p
+        <motion.h3
           variants={paragraphVariants}
           initial="hidden"
           animate="visible"
           className="frontP"
+          viewport={{ once: true }}
         >
-          Depuis plus d'un siècle, El Bahja incarne l'âme culinaire de
-          l'Algérie,
-        </motion.p>
+          Le chemin du succès est pavé de volonté.
+        </motion.h3>
       </div>
-      <p>
-        Depuis plus d'un siècle, El Bahja incarne l'âme culinaire de l'Algérie,
-        perpétuant les traditions gastronomiques avec passion et excellence.
-        Fondé en 1902 au cœur d'Alger, ce restaurant a su conquérir le cœur des
-        amateurs de cuisine authentique grâce à un savoir-faire transmis de
-        génération en génération.
-        <br />
-        <br />
-        L'histoire d'El Bahja commence dans une modeste ruelle d'Alger, où son
-        fondateur, un maître cuisinier dévoué à son art, a ouvert les portes de
-        ce qui allait devenir une véritable institution. Sa vision était simple
-        : offrir aux habitants de la ville une cuisine qui célèbre la richesse
-        des saveurs et des traditions algériennes. Dès ses débuts, le restaurant
-        a attiré une clientèle fidèle, séduite par la qualité des plats et
-        l’ambiance chaleureuse des lieux.
-        <br />
-        <br />
-        Au fil des décennies, El Bahja a su préserver l'authenticité de sa
-        cuisine tout en s'adaptant aux goûts et aux attentes d'une clientèle
-        toujours plus exigeante. Les recettes, soigneusement élaborées,
-        respectent les techniques ancestrales tout en intégrant les meilleurs
-        ingrédients locaux. Du couscous parfumé aux épices fines, aux tajines
-        mijotés avec amour, chaque plat raconte l'histoire d'un pays riche en
-        traditions.
-        <br />
-        <br />
-        Le succès d'El Bahja ne s'est pas limité à Alger. Aujourd'hui, le
-        restaurant compte 35 succursales à travers tout le pays, de la
-        Méditerranée aux confins du Sahara. Chaque établissement, bien que
-        moderne dans son agencement, reste fidèle à l’esprit d’origine, offrant
-        à ses clients une expérience culinaire qui est à la fois un voyage dans
-        le temps et une célébration des saveurs d’Algérie.
-        <br />
-        <br />
-        Chaque jour, les équipes d'El Bahja perpétuent cet héritage, avec un
-        engagement sans faille envers la qualité et l'authenticité. Les chefs,
-        formés selon les méthodes traditionnelles, préparent les plats avec une
-        passion qui se ressent dans chaque bouchée. Que ce soit pour un repas
-        familial, une célébration ou un simple déjeuner entre amis, El Bahja est
-        le lieu où l'on se retrouve pour partager bien plus qu'un repas : une
-        véritable immersion dans l'âme de la cuisine algérienne.
-        <br />
-        <br />
-        Ainsi, El Bahja ne se contente pas de nourrir ses clients, il leur offre
-        une part de l'histoire de l'Algérie, un héritage culinaire préservé avec
-        soin depuis plus de 120 ans. Avec ses 35 branches à travers le pays, El
-        Bahja continue de grandir tout en restant fidèle à ses racines, rendant
-        hommage à la richesse de la culture culinaire algérienne, une assiette à
-        la fois.
-        loremohodfhFFFFFFFFFFFFFFoicocfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-      </p>
     </>
+  );
+};
+const Counter = () => {
+  const counter1 = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { delay: 1, duration: 1 },
+    },
+  };
+  const counter2 = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { delay: 1.1, duration: 1 },
+    },
+  };
+  const counter3 = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { delay: 1.2, duration: 1 },
+    },
+  };
+  return (
+    <main className="countsDiv">
+      <motion.div
+        variants={counter1}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="countDiv"
+      >
+        <p>FIDÈLE À PLUS DE</p>
+        <AnimatedCounter from={0} to={1100} duration={5} />
+        <p>MEMBRES</p>
+      </motion.div>
+      <motion.div
+        variants={counter2}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="countDiv"
+      >
+        <p>JOUEZ À PLUS DE </p>
+        <AnimatedCounter from={0} to={5} duration={3} />
+        <p>LOCAUX</p>
+      </motion.div>
+      <motion.div
+        variants={counter3}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="countDiv"
+      >
+        <p>À VOTRE SERVICE DEPUIS</p>
+        <AnimatedCounter from={0} to={9} duration={4} />
+        <p>ANS</p>
+      </motion.div>
+    </main>
+  );
+};
+const Features = () => {
+  return (
+    <>
+      <section className="bg-gradient-to-r from-black via-black to-red-700 p-4 md:p-8">
+        {/* <section className="bg-gradient-to-r from-black via-black to-red-700 p-4 md:p-8 flex flex-col items-center justify-center w-full h-screen"> */}
+        <h1 className="featured1">FEATURED CLASSES</h1>
+        {/* <h1 className="featured2">FEATURED CLASSES</h1> */}
+        <div className="mx-auto max-w-5xl mt-5">
+          <Link
+            heading="Cardio"
+            imgSrc="/homepage/cardio.jpg"
+            href="/classes/cardio"
+          />
+          <Link
+            heading="Fitness"
+            imgSrc="/homepage/fitness.jpg"
+            href="/classes/fitness"
+          />
+          <Link
+            heading="Body Building"
+            imgSrc="/homepage/bodybuilding.jpg"
+            href="/classes/bodybuilding"
+          />
+          <Link
+            heading="Crossfit"
+            imgSrc="/homepage/crossfit.jpg"
+            href="/classes/crossfit"
+          />
+        </div>
+      </section>
+    </>
+  );
+};
+
+const Link = ({ heading, imgSrc, subheading, href }) => {
+  const ref = useRef(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const top = useTransform(mouseYSpring, [0.5, -0.5], ["40%", "60%"]);
+  const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
+
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+
+    const width = rect.width;
+    const height = rect.height;
+
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  return (
+    <motion.a
+      href={href}
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      initial="initial"
+      whileHover="whileHover"
+      className="group relative flex items-center justify-between border-b-2 border-neutral-700 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
+    >
+      <div>
+        <motion.span
+          variants={{
+            initial: { x: 0 },
+            whileHover: { x: -16 },
+          }}
+          transition={{
+            type: "spring",
+            staggerChildren: 0.075,
+            delayChildren: 0.25,
+          }}
+          className="relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
+        >
+          {heading.split("").map((l, i) => (
+            <motion.span
+              variants={{
+                initial: { x: 0 },
+                whileHover: { x: 16 },
+              }}
+              transition={{ type: "spring" }}
+              className="inline-block"
+              key={i}
+            >
+              {l}
+            </motion.span>
+          ))}
+        </motion.span>
+        <span className="relative z-10 mt-2 block text-base text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50">
+          {subheading}
+        </span>
+      </div>
+
+      <motion.img
+        style={{
+          top,
+          left,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        variants={{
+          initial: { scale: 0, rotate: "-12.5deg" },
+          whileHover: { scale: 1, rotate: "12.5deg" },
+        }}
+        transition={{ type: "spring" }}
+        src={imgSrc}
+        className="absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64"
+        alt={`Image representing a link for ${heading}`}
+      />
+
+      <motion.div
+        variants={{
+          initial: {
+            x: "25%",
+            opacity: 0,
+          },
+          whileHover: {
+            x: "0%",
+            opacity: 1,
+          },
+        }}
+        transition={{ type: "spring" }}
+        className="relative z-10 p-4"
+      >
+        <FiArrowRight className="text-5xl text-neutral-50" />
+      </motion.div>
+    </motion.a>
+  );
+};
+const About = () => {
+  return (
+    <div className="aboutDiv">
+      <div className="aboutImg">hjfiohfô</div>
+      <div className="aboutArticle">
+        <h2>GET TO KNOW US BETTER translate to french</h2>
+      </div>
+    </div>
   );
 };
 
