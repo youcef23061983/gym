@@ -53,7 +53,7 @@ const FrontImage = () => {
           className="frontTitle"
           viewport={{ once: true }}
         >
-          Puissance et Passion{" "}
+          FORCE ET PÉRSEVÉRANCE{" "}
         </motion.h2>
         <motion.h3
           variants={paragraphVariants}

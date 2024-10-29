@@ -19,10 +19,11 @@ const Navbar = () => {
 
   const links = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
     { name: "Classes", href: "/classes" },
+    { name: "Workout", href: "/workout" },
+
     { name: "Shop", href: "/shop" },
-    { name: "Membership", href: "/membership" },
+    { name: "Testimonials", href: "/testimonials" },
   ];
 
   const { data: session } = useSession();
@@ -66,7 +67,7 @@ const Navbar = () => {
           <FaAlignJustify className="logo" />
         )}
       </button>
-      <Link href="/">
+      <Link href="/" className="x">
         <Image src="/logo.png" alt="Logo" width={40} height={40} />
       </Link>
       <ul className={`${showLinks ? "links show-nav" : "links"}`}>
@@ -82,15 +83,18 @@ const Navbar = () => {
         ))}
       </ul>
       {session ? (
-        <div>
+        <div className="logName">
+          <span style={{ fontSize: "15px" }}>
+            {session?.user?.name?.slice(0, 6)}...
+          </span>
+
           <Link
             className="link"
-            href="/api/auth/signout"
+            href="/api/auth/signout?callbackUrl=/"
             onClick={() => signOut()}
           >
             Logout
           </Link>
-          <p>{session?.user?.name}</p>
         </div>
       ) : (
         <Link className="link" href="/api/auth/signin" onClick={() => signIn()}>

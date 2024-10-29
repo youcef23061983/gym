@@ -7,13 +7,13 @@ const Page = () => {
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
-      redirect("/api/auth/signin?callbackUrl=/clientMember");
+      redirect("/api/auth/signin?callbackUrl=/testimonials");
     },
   });
 
   return (
     <div>
-      <h1>Client Member Page</h1>
+      <h1>Client Testimonial Page</h1>
       <p>{session?.user?.email}</p>
       <p>{session?.user?.role}</p>
       <p>{session?.user?.name}</p>
