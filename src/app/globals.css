@@ -207,7 +207,6 @@ a {
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  padding: 3rem 1rem;
   background-color: #f1ead7;
 }
 @media screen and (min-width: 336px) {
@@ -322,6 +321,9 @@ a {
     align-items: center;
     gap: 1.5rem;
   }
+  .testimonialArticle {
+    padding: 3rem 1rem 17rem 1rem;
+  }
 }
 @media screen and (min-width: 786px) {
   p {
@@ -428,6 +430,10 @@ a {
     width: 100%;
     padding: 1rem 5rem;
   }
+
+  .testimonialArticle {
+    padding: 3rem 1rem 5rem 1rem;
+  }
 }
 @media screen and (min-width: 785px) {
   .links {
@@ -472,6 +478,9 @@ a {
     flex-direction: row;
     gap: 3rem;
     padding: 3rem 5rem;
+  }
+  .testimonialArticle {
+    padding: 2rem 1rem 20rem 1rem;
   }
 }
 @media screen and (min-width: 1200px) {

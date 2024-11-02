@@ -131,7 +131,7 @@ const TestimonilasSlider = () => {
   });
   return (
     <main ref={container}>
-      {projects?.map((project, i) => {
+      {/* {projects?.map((project, i) => {
         const targetScale = 1 - (projects.length - i) * 0.05;
         return (
           <Card
@@ -141,6 +141,22 @@ const TestimonilasSlider = () => {
             progress={scrollYProgress}
             range={[i * 0.25, 1]}
             targetScale={targetScale}
+          />
+        );
+      })} */}
+
+      {projects?.map((project, i) => {
+        const startOffset = i / projects.length;
+        const endOffset = startOffset + 0.2; // Adjust this factor for tighter control
+
+        return (
+          <Card
+            key={`p_${i}`}
+            i={i}
+            {...project}
+            progress={scrollYProgress}
+            range={[startOffset, endOffset]}
+            targetScale={1 - (projects.length - i) * 0.05}
           />
         );
       })}
@@ -165,7 +181,10 @@ const Card = ({
   });
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
-  const scale = useTransform(progress, range, [1, targetScale]);
+  // const scale = useTransform(progress, range, [1, targetScale]);
+  const scale = useTransform(progress, [0, 1], [1, targetScale], {
+    clamp: false,
+  });
 
   return (
     <div ref={container} className="cardContainer">
