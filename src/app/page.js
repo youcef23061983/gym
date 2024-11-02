@@ -22,7 +22,7 @@ const Home = () => {
       <Features />
       <About />
       <PricingPlan />
-      <ShuffleHero />
+      <InstaHero />
     </div>
   );
 };
@@ -392,7 +392,7 @@ const PricingPlan = () => {
   );
 };
 
-const ShuffleHero = () => {
+const InstaHero = () => {
   return (
     <section className="w-full px-4 py-12 mx-4 grid grid-cols-1 md:grid-cols-2 items-center gap-3 max-w-6xl md:max-w-[100em]">
       <div className="pricingDiv">

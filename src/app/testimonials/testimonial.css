@@ -1,0 +1,157 @@
+.cardContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 100px;
+}
+
+.cardContainer .card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -25%;
+  height: 500px;
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 25px;
+  padding: 20px;
+  transform-origin: top;
+}
+
+.cardContainer .card h2 {
+  text-align: center;
+  margin: 0px;
+  font-size: 24px;
+}
+
+.cardContainer .card .body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.cardContainer .card .body .description {
+  width: 100%;
+  position: relative;
+  /* top: 10%; */
+}
+
+.cardContainer .card .body .description p {
+  font-size: 14px;
+}
+
+.cardContainer .card .body .description p::first-letter {
+  font-size: 24px;
+  font-family: "Title";
+}
+
+.cardContainer .card .body .description span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cardContainer .card .body .description span a {
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cardContainer .card .body .imageContainer {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.cardContainer .card .body .imageContainer .inner {
+  width: 100%;
+  height: 100%;
+}
+
+.cardContainer .card .body .imageContainer img {
+  object-fit: cover;
+}
+
+/* Media query for screens 336px and up */
+@media (min-width: 336px) {
+  .cardContainer .card {
+    padding: 30px;
+    height: 650px;
+  }
+
+  .cardContainer .card h2 {
+    font-size: 26px;
+  }
+
+  .cardContainer .card .body {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .cardContainer .card .body .description p {
+    font-size: 16px;
+  }
+
+  .cardContainer .card .body .imageContainer {
+    height: 300px;
+  }
+}
+
+/* Media query for screens 786px and up */
+@media (min-width: 786px) {
+  .cardContainer .card {
+    padding: 40px;
+  }
+
+  .cardContainer .card h2 {
+    font-size: 28px;
+  }
+
+  .cardContainer .card .body {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .cardContainer .card .body .description {
+    width: 40%;
+  }
+
+  .cardContainer .card .body .imageContainer {
+    width: 60%;
+    height: 100%;
+  }
+}
+@media (min-width: 920px) {
+  .cardContainer {
+    height: 800px;
+  }
+}
+
+/* Media query for screens 992px and up */
+@media (min-width: 992px) {
+  .cardContainer .card {
+    padding: 50px;
+  }
+
+  .cardContainer .card h2 {
+    font-size: 28px;
+  }
+
+  .cardContainer .card .body {
+    gap: 50px;
+  }
+
+  .cardContainer .card .body .description {
+    width: 40%;
+  }
+
+  .cardContainer .card .body .imageContainer {
+    width: 60%;
+  }
+}

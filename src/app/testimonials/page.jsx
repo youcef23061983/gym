@@ -1,7 +1,13 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+
 import Image from "next/image";
+import "./testimonial.css";
+import { useTransform, motion, useScroll } from "framer-motion";
+import { useRef, useEffect } from "react";
+import Lenis from "lenis";
+import { projects } from "./data";
 
 const Page = () => {
   const { data: session } = useSession({
@@ -10,11 +16,43 @@ const Page = () => {
       redirect("/api/auth/signin?callbackUrl=/testimonials");
     },
   });
+  const headerVariants = {
+    hidden: { x: "20vw", opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { delay: 0.5, duration: 1, ease: "easeInOut" },
+    },
+  };
+  const paragraphVariants = {
+    hidden: { x: "20vw", opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { delay: 0.8, duration: 1.5, ease: "easeInOut" },
+    },
+  };
+  const homeContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 1.5,
+        type: "spring",
+        when: "beforeChildren",
+        staggerChildren: 0.5,
+      },
+    },
+  };
+
+  const homeChidren = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
 
   return (
     <div>
-      <h1>Client Testimonial Page</h1>
-      <p>{session?.user?.email}</p>
+      {/* <p>{session?.user?.email}</p>
       <p>{session?.user?.role}</p>
       <p>{session?.user?.name}</p>
       {session?.user?.image && (
@@ -24,7 +62,134 @@ const Page = () => {
           width={50}
           height={50}
         />
-      )}
+      )} */}
+
+      <div
+        className="flex flex-col items-center justify-center gap-16 h-screen bg-cover bg-no-repeat bg-center bg-fixed "
+        style={{ backgroundImage: "url('/testimonial/testimonialheader.jpg')" }}
+      >
+        <motion.h2
+          variants={headerVariants}
+          initial="hidden"
+          animate="visible"
+          className="frontTitle"
+          viewport={{ once: true }}
+        >
+          Avis d'athlètes et de passionnés{" "}
+        </motion.h2>
+        <motion.h3
+          variants={paragraphVariants}
+          initial="hidden"
+          animate="visible"
+          className="frontP"
+          viewport={{ once: true }}
+        >
+          Les résultats parlent d’eux-mêmes.
+        </motion.h3>{" "}
+      </div>
+      <motion.div
+        variants={homeContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="testimonialArticle"
+      >
+        <motion.h3 variants={homeChidren} className="frontP">
+          Ils ont transformé leur vie avec nous{" "}
+        </motion.h3>
+        <motion.p variants={homeChidren}>
+          Bienvenue sur notre page de témoignages, où nos membres partagent
+          leurs parcours de transformation, de persévérance et de réussite.
+          Chacun de leurs récits incarne le courage, la discipline et la
+          détermination, des valeurs que nous cultivons chaque jour dans notre
+          salle de sport. Ces témoignages authentiques reflètent les progrès
+          réels et les objectifs atteints par ceux qui ont choisi de repousser
+          leurs limites. Laissez-vous inspirer par leurs histoires et découvrez
+          comment, ici, chaque effort compte et chaque victoire est célébrée.
+        </motion.p>
+        <TestimonilasSlider />
+      </motion.div>
+    </div>
+  );
+};
+const TestimonilasSlider = () => {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end end"],
+  });
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  });
+  return (
+    <main ref={container}>
+      {projects?.map((project, i) => {
+        const targetScale = 1 - (projects.length - i) * 0.05;
+        return (
+          <Card
+            key={`p_${i}`}
+            i={i}
+            {...project}
+            progress={scrollYProgress}
+            range={[i * 0.25, 1]}
+            targetScale={targetScale}
+          />
+        );
+      })}
+    </main>
+  );
+};
+
+const Card = ({
+  i,
+  title,
+  description,
+  src,
+  color,
+  progress,
+  range,
+  targetScale,
+}) => {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start end", "start start"],
+  });
+
+  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+  const scale = useTransform(progress, range, [1, targetScale]);
+
+  return (
+    <div ref={container} className="cardContainer">
+      <motion.div
+        style={{
+          backgroundColor: color,
+          scale,
+          top: `calc(-5vh + ${i * 25}px)`,
+        }}
+        className="card"
+      >
+        <h2>{title}</h2>
+        <div className="body">
+          <div className="description">
+            <p>{description}</p>
+          </div>
+
+          <div className="imageContainer">
+            <motion.div className="inner" style={{ scale: imageScale }}>
+              <Image fill src={`/${src}`} alt="image" />
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };

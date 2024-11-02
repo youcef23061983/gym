@@ -43,7 +43,7 @@ label {
 .site-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  min-height: 100dvh;
 }
 a {
   text-decoration: none;
@@ -73,6 +73,10 @@ a {
   background-color: black;
   padding: 0.7rem 1.7rem;
   border-radius: 0.7rem;
+}
+.headerimages {
+  display: flex;
+  height: 100vh;
 }
 .img {
   width: 100%;
@@ -197,6 +201,15 @@ a {
   align-items: center;
   gap: 3rem;
 }
+.testimonialArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 1rem;
+  background-color: #f1ead7;
+}
 @media screen and (min-width: 336px) {
   h2 {
     font-size: 2.4rem;
@@ -278,8 +291,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5rem 1rem;
-    margin-top: auto;
+    margin: 3rem 1rem;
     box-shadow: inset 0.2rem 0.2rem 0.7rem rgb(228, 0, 0);
     padding: 1rem;
   }
