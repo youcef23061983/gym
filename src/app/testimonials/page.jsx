@@ -7,7 +7,8 @@ import "./testimonial.css";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef, useEffect } from "react";
 import Lenis from "lenis";
-import { projects } from "./data";
+import { testimonials } from "./data";
+import UseFetch from "@/components/UseFetch";
 
 const Page = () => {
   const { data: session } = useSession({
@@ -16,6 +17,7 @@ const Page = () => {
       redirect("/api/auth/signin?callbackUrl=/testimonials");
     },
   });
+
   const headerVariants = {
     hidden: { x: "20vw", opacity: 0 },
     visible: {
@@ -85,7 +87,7 @@ const Page = () => {
           viewport={{ once: true }}
         >
           Les résultats parlent d’eux-mêmes.
-        </motion.h3>{" "}
+        </motion.h3>
       </div>
       <motion.div
         variants={homeContainer}
@@ -107,12 +109,17 @@ const Page = () => {
           leurs limites. Laissez-vous inspirer par leurs histoires et découvrez
           comment, ici, chaque effort compte et chaque victoire est célébrée.
         </motion.p>
+
         <TestimonilasSlider />
       </motion.div>
     </div>
   );
 };
 const TestimonilasSlider = () => {
+  const { data: testimonials } = UseFetch(
+    "http://localhost:3001/testimonials",
+    "testimonials"
+  );
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -131,23 +138,9 @@ const TestimonilasSlider = () => {
   });
   return (
     <main ref={container}>
-      {/* {projects?.map((project, i) => {
-        const targetScale = 1 - (projects.length - i) * 0.05;
-        return (
-          <Card
-            key={`p_${i}`}
-            i={i}
-            {...project}
-            progress={scrollYProgress}
-            range={[i * 0.25, 1]}
-            targetScale={targetScale}
-          />
-        );
-      })} */}
-
-      {projects?.map((project, i) => {
-        const startOffset = i / projects.length;
-        const endOffset = startOffset + 0.2; // Adjust this factor for tighter control
+      {testimonials?.map((project, i) => {
+        const startOffset = i / testimonials.length;
+        const endOffset = startOffset + 0.2;
 
         return (
           <Card
@@ -156,7 +149,7 @@ const TestimonilasSlider = () => {
             {...project}
             progress={scrollYProgress}
             range={[startOffset, endOffset]}
-            targetScale={1 - (projects.length - i) * 0.05}
+            targetScale={1 - (testimonials.length - i) * 0.05}
           />
         );
       })}
@@ -164,16 +157,7 @@ const TestimonilasSlider = () => {
   );
 };
 
-const Card = ({
-  i,
-  title,
-  description,
-  src,
-  color,
-  progress,
-  range,
-  targetScale,
-}) => {
+const Card = ({ i, title, description, src, color, progress, targetScale }) => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -181,7 +165,6 @@ const Card = ({
   });
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
-  // const scale = useTransform(progress, range, [1, targetScale]);
   const scale = useTransform(progress, [0, 1], [1, targetScale], {
     clamp: false,
   });

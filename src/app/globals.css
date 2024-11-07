@@ -55,7 +55,6 @@ a {
   align-items: center;
   width: 100%;
   padding: 1rem 3rem;
-  border-radius: 0.5rem;
   z-index: 99;
 }
 
@@ -209,6 +208,93 @@ a {
   gap: 3rem;
   background-color: #f1ead7;
 }
+.contactDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 7rem 1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.8rem;
+}
+.contactHeader {
+  color: #c4a27c;
+  font-weight: 300;
+}
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4.5rem;
+  padding: 3rem;
+}
+.overlayText {
+  color: #a6896b;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0.7rem 3rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #a6896b;
+  margin-right: auto;
+}
+.overlayText:hover {
+  color: white;
+  background-color: #a6896b;
+  transition: all 0.3s ease-in-out;
+}
+.mapResponsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.mapResponsive iframe {
+  left: 0;
+  top: 0;
+  border: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.aboutDiv {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.cardioArticle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+}
+.cardioImages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  box-shadow: 0.5rem 0.5rem 3rem inset rgb(45, 45, 45);
+  border-radius: 0.5rem;
+  background-color: white;
+}
 @media screen and (min-width: 336px) {
   h2 {
     font-size: 2.4rem;
@@ -324,6 +410,35 @@ a {
   .testimonialArticle {
     padding: 3rem 1rem 17rem 1rem;
   }
+  .input {
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 0.1rem solid transparent;
+    border-radius: 0.2rem;
+    font-weight: 100;
+    color: #18181b;
+  }
+  .form {
+    width: 360px;
+  }
+  .inputLabel {
+    font-size: 1.5rem;
+    color: white;
+  }
+  .formStatusMessage {
+    color: white;
+    font-size: 1.5rem;
+  }
+  .classCardio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 1rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 0.8rem;
+  }
 }
 @media screen and (min-width: 786px) {
   p {
@@ -434,6 +549,32 @@ a {
   .testimonialArticle {
     padding: 3rem 1rem 5rem 1rem;
   }
+  .input {
+    font-weight: 100;
+    font-size: 1.6rem;
+  }
+  .form {
+    width: 500px;
+  }
+  .inputLabel {
+    font-size: 2rem;
+    color: white;
+  }
+  .formStatusMessage {
+    font-size: 2rem;
+  }
+  .classCardio {
+    flex-direction: row;
+  }
+  .cardioArticle {
+    width: 60%;
+  }
+  .imageContainer {
+    width: 40%;
+  }
+  .cardioImages {
+    width: 40%;
+  }
 }
 @media screen and (min-width: 785px) {
   .links {
@@ -481,6 +622,21 @@ a {
   }
   .testimonialArticle {
     padding: 2rem 1rem 20rem 1rem;
+  }
+  .input {
+    font-weight: lighter;
+    font-size: 2rem;
+  }
+  .form {
+    width: 800px;
+  }
+  .inputLabel {
+    font-size: 2.2rem;
+    color: white;
+  }
+  .formStatusMessage {
+    color: white;
+    font-size: 2.2rem;
   }
 }
 @media screen and (min-width: 1200px) {

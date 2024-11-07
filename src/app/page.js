@@ -6,10 +6,11 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import { FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+import UseFetch from "@/components/UseFetch";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <ReactLenis
         root
         options={{
@@ -18,12 +19,48 @@ const Home = () => {
       >
         <FrontImage />
       </ReactLenis>
-      <Counter />
-      <Features />
-      <About />
-      <PricingPlan />
-      <InstaHero />
-    </div>
+      <ReactLenis
+        root
+        options={{
+          lerp: 0.05,
+        }}
+      >
+        <Counter />
+      </ReactLenis>
+
+      <ReactLenis
+        root
+        options={{
+          lerp: 0.05,
+        }}
+      >
+        <Features />
+      </ReactLenis>
+      <ReactLenis
+        root
+        options={{
+          lerp: 0.05,
+        }}
+      >
+        <About />
+      </ReactLenis>
+      <ReactLenis
+        root
+        options={{
+          lerp: 0.05,
+        }}
+      >
+        <PricingPlan />
+      </ReactLenis>
+      <ReactLenis
+        root
+        options={{
+          lerp: 0.05,
+        }}
+      >
+        <InstaHero />
+      </ReactLenis>
+    </>
   );
 };
 const FrontImage = () => {
@@ -293,60 +330,61 @@ const About = () => {
     </div>
   );
 };
-const PricingUnit = ({ period, money }) => {
-  return (
-    <div className="pricingDiv">
-      <h3 style={{ fontWeight: "bold" }}>{period}</h3>
-      <p style={{ fontWeight: "400" }}>
-        <span style={{ color: "green", fontWeight: "500" }}>{money}€</span>
-        /month
-      </p>
-      <span
-        style={{
-          display: "flex",
-          justifyContent: "start",
-          alignItems: "center",
-          gap: "1px",
-        }}
-      >
-        <IoIosCheckmarkCircleOutline
-          style={{ color: "green", fontSize: "20px" }}
-        />
-        Tous les cours
-      </span>
-      <span
-        style={{
-          display: "flex",
-          justifyContent: "start",
-          alignItems: "center",
-          gap: "1px",
-        }}
-      >
-        <IoIosCheckmarkCircleOutline
-          style={{ color: "green", fontSize: "20px" }}
-        />
-        Tous les événements pour les membres
-      </span>
-      <span
-        style={{
-          display: "flex",
-          justifyContent: "start",
-          alignItems: "center",
-          gap: "1px",
-        }}
-      >
-        <IoIosCheckmarkCircleOutline
-          style={{ color: "green", fontSize: "20px" }}
-        />
-        Accès complet à la salle de sport
-      </span>
-      <Link href="contact" className="link mt-10">
-        REJOIGNEZ-NOUS
-      </Link>
-    </div>
-  );
-};
+
 const PricingPlan = () => {
+  const PricingUnit = ({ period, money }) => {
+    return (
+      <div className="pricingDiv">
+        <h3 style={{ fontWeight: "bold" }}>{period}</h3>
+        <p style={{ fontWeight: "400" }}>
+          <span style={{ color: "green", fontWeight: "500" }}>{money}€</span>
+          /month
+        </p>
+        <span
+          style={{
+            display: "flex",
+            justifyContent: "start",
+            alignItems: "center",
+            gap: "1px",
+          }}
+        >
+          <IoIosCheckmarkCircleOutline
+            style={{ color: "green", fontSize: "20px" }}
+          />
+          Tous les cours
+        </span>
+        <span
+          style={{
+            display: "flex",
+            justifyContent: "start",
+            alignItems: "center",
+            gap: "1px",
+          }}
+        >
+          <IoIosCheckmarkCircleOutline
+            style={{ color: "green", fontSize: "20px" }}
+          />
+          Tous les événements pour les membres
+        </span>
+        <span
+          style={{
+            display: "flex",
+            justifyContent: "start",
+            alignItems: "center",
+            gap: "1px",
+          }}
+        >
+          <IoIosCheckmarkCircleOutline
+            style={{ color: "green", fontSize: "20px" }}
+          />
+          Accès complet à la salle de sport
+        </span>
+        <Link href="contact" className="link mt-10">
+          REJOIGNEZ-NOUS
+        </Link>
+      </div>
+    );
+  };
   const headerVariants = {
     hidden: { x: "20vw", opacity: 0 },
     visible: {
@@ -393,8 +431,79 @@ const PricingPlan = () => {
 };
 
 const InstaHero = () => {
+  const shuffle = (array) => {
+    let currentIndex = array.length,
+      randomIndex;
+
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  };
+
+  const { data: squareData } = UseFetch(
+    "http://localhost:3001/squareData",
+    "instagram"
+  );
+
+  const generateSquares = () => {
+    // Check if squareData is an array
+    if (!Array.isArray(squareData)) {
+      return <p>No data available</p>; // or handle this case as needed
+    }
+
+    return shuffle([...squareData]).map((sq) => (
+      <motion.div
+        key={sq.id}
+        layout
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="w-full h-full"
+        style={{
+          backgroundImage: `url(${sq.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></motion.div>
+    ));
+  };
+
+  const ShuffleGrid = () => {
+    const timeoutRef = useRef(null);
+    const [squares, setSquares] = useState([]); // Initialize as an empty array
+
+    useEffect(() => {
+      shuffleSquares();
+      return () => clearTimeout(timeoutRef.current);
+    }, []);
+
+    const shuffleSquares = () => {
+      const generatedSquares = generateSquares();
+      if (Array.isArray(generatedSquares)) {
+        setSquares(generatedSquares);
+      }
+      timeoutRef.current = setTimeout(shuffleSquares, 2000); // Faster interval to reduce "crumble"
+    };
+
+    return (
+      <div className="grid grid-cols-4 grid-rows-4 h-[450px] gap-1 p-2.5">
+        {Array.isArray(squares) && squares.map((sq) => sq)}{" "}
+        {/* Ensure squares is an array */}
+      </div>
+    );
+  };
+
   return (
-    <section className="w-full px-4 py-12 mx-4 grid grid-cols-1 md:grid-cols-2 items-center gap-3 max-w-6xl md:max-w-[100em]">
+    <section className="w-full px-4 py-12 mx-0 grid grid-cols-1 md:grid-cols-2 items-center gap-3">
       <div className="pricingDiv">
         <h3 style={{ fontWeight: "bold" }}>
           Transformez Votre Corps, Élevez Votre Esprit !
@@ -417,128 +526,6 @@ const InstaHero = () => {
       </div>
       <ShuffleGrid />
     </section>
-  );
-};
-
-const shuffle = (array) => {
-  let currentIndex = array.length,
-    randomIndex;
-
-  while (currentIndex != 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-
-  return array;
-};
-
-const squareData = [
-  {
-    id: 1,
-    src: "/homepage/frontinsta1.jpg",
-  },
-  {
-    id: 2,
-    src: "/homepage/frontinsta2.jpg",
-  },
-  {
-    id: 3,
-    src: "/homepage/frontinsta3.jpg",
-  },
-  {
-    id: 4,
-    src: "/homepage/frontinsta4.jpg",
-  },
-  {
-    id: 5,
-    src: "/homepage/frontinsta5.jpg",
-  },
-  {
-    id: 6,
-    src: "/homepage/frontinsta6.jpg",
-  },
-  {
-    id: 7,
-    src: "/homepage/frontinsta7.jpg",
-  },
-  {
-    id: 8,
-    src: "/homepage/frontinsta8.jpg",
-  },
-  {
-    id: 9,
-    src: "/homepage/frontinsta9.jpg",
-  },
-  {
-    id: 10,
-    src: "/homepage/frontinsta10.jpg",
-  },
-  {
-    id: 11,
-    src: "/homepage/frontinsta11.jpg",
-  },
-  {
-    id: 12,
-    src: "/homepage/frontinsta12.jpg",
-  },
-  {
-    id: 13,
-    src: "/homepage/frontinsta13.jpg",
-  },
-  {
-    id: 14,
-    src: "/homepage/frontinsta14.jpg",
-  },
-  {
-    id: 15,
-    src: "/homepage/frontinsta15.jpg",
-  },
-  {
-    id: 16,
-    src: "/homepage/frontinsta16.jpg",
-  },
-];
-
-const generateSquares = () => {
-  return shuffle(squareData).map((sq) => (
-    <motion.div
-      key={sq.id}
-      layout
-      transition={{ duration: 1.5, type: "spring" }}
-      className="w-full h-full"
-      style={{
-        backgroundImage: `url(${sq.src})`,
-        backgroundSize: "cover",
-      }}
-    ></motion.div>
-  ));
-};
-
-const ShuffleGrid = () => {
-  const timeoutRef = useRef(null);
-  const [squares, setSquares] = useState(generateSquares());
-
-  useEffect(() => {
-    shuffleSquares();
-
-    return () => clearTimeout(timeoutRef.current);
-  }, []);
-
-  const shuffleSquares = () => {
-    setSquares(generateSquares());
-
-    timeoutRef.current = setTimeout(shuffleSquares, 3000);
-  };
-
-  return (
-    <div className="grid grid-cols-4 grid-rows-4 h-[450px] gap-1 p-2.5">
-      {squares.map((sq) => sq)}
-    </div>
   );
 };
 

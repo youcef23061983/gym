@@ -1,8 +1,8 @@
-import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import AuthProvider from "./(components)/AuthProvider";
+import ReactProvider from "@/components/ReactProvider";
 
 export const metadata = {
   title: "GYM",
@@ -13,13 +13,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="site-wrapper">
-        <AuthProvider>
-          <Navbar />
+        <ReactProvider>
+          <AuthProvider>
+            <Navbar />
 
-          <div>{children}</div>
-        </AuthProvider>
-
-        <Footer />
+            <div>{children}</div>
+          </AuthProvider>
+          <Footer />
+        </ReactProvider>
       </body>
     </html>
   );
