@@ -1,11 +1,5 @@
-"use client";
 import Image from "next/image";
-import UseFetch from "../UseFetch";
 const Movement = async () => {
-  // const { data, error, isPending } = UseFetch(
-  //   "http://localhost:3001/sport",
-  //   "sport"
-  // );
   let res = await fetch("http://localhost:3001/sport");
   let data = await res.json();
   const dosCuisses = data ? data[0] : [];

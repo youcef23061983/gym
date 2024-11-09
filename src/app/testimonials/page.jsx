@@ -5,10 +5,7 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import "./testimonial.css";
 import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef, useEffect } from "react";
-import Lenis from "lenis";
-import { testimonials } from "./data";
-import UseFetch from "@/components/UseFetch";
+import { useRef, useEffect, useState } from "react";
 
 const Page = () => {
   const { data: session } = useSession({
@@ -116,26 +113,29 @@ const Page = () => {
   );
 };
 const TestimonilasSlider = () => {
-  const { data: testimonials } = UseFetch(
-    "http://localhost:3001/testimonials",
-    "testimonials"
-  );
+  const [testimonials, setTestimonials] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/testimonials");
+        if (!res.ok) {
+          throw Error("There is no product data");
+        }
+        const data = await res.json();
+        setTestimonials(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
+
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start start", "end end"],
   });
 
-  useEffect(() => {
-    const lenis = new Lenis();
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-  });
   return (
     <main ref={container}>
       {testimonials?.map((project, i) => {

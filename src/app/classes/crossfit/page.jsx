@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ShuffleGrid from "@/components/ShuffleGrid";
 
 const page = () => {
   const headerVariants = {
@@ -108,26 +109,10 @@ const page = () => {
             à repousser vos limites !
           </p>
         </div>
-        <ShuffleGrid />
+        <ShuffleGrid squareData={squareData} />
       </section>
     </div>
   );
-};
-const shuffle = (array) => {
-  let currentIndex = array.length,
-    randomIndex;
-
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-
-  return array;
 };
 
 const squareData = [
@@ -148,45 +133,5 @@ const squareData = [
   { id: 15, src: "/crossfit/cross16.jpg" },
   { id: 16, src: "/crossfit/cross17.jpg" },
 ];
-
-const generateSquares = () => {
-  return shuffle([...squareData]).map((sq) => (
-    <motion.div
-      key={sq.id}
-      layout
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="w-full h-full"
-      style={{
-        backgroundImage: `url(${sq.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    ></motion.div>
-  ));
-};
-
-const ShuffleGrid = () => {
-  const timeoutRef = useRef(null);
-  const [squares, setSquares] = useState(generateSquares());
-
-  useEffect(() => {
-    shuffleSquares();
-    return () => clearTimeout(timeoutRef.current);
-  }, []);
-
-  const shuffleSquares = () => {
-    setSquares(generateSquares());
-    timeoutRef.current = setTimeout(shuffleSquares, 2000); // Faster interval to reduce "crumble"
-  };
-
-  return (
-    <div className="grid grid-cols-4 grid-rows-4 h-[450px] gap-1 p-2.5">
-      <AnimatePresence>{squares.map((sq) => sq)}</AnimatePresence>
-    </div>
-  );
-};
 
 export default page;

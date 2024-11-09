@@ -1,9 +1,24 @@
 "use client";
-import UseFetch from "@/components/UseFetch";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const page = () => {
-  const { data: cardio } = UseFetch("http://localhost:3001/cardio", "cardio");
+  const [cardio, setTCardio] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/cardio");
+        if (!res.ok) {
+          throw Error("There is no product data");
+        }
+        const data = await res.json();
+        setTCardio(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
 
   const headerVariants = {
     hidden: { x: "20vw", opacity: 0 },
@@ -47,7 +62,7 @@ const page = () => {
     >
       <div
         className="flex flex-col items-center justify-center gap-16 h-screen bg-cover bg-no-repeat bg-center bg-fixed "
-        style={{ backgroundImage: `url(${cardio ? cardio[0].src : null})` }}
+        style={{ backgroundImage: `url(${cardio ? cardio[0]?.src : null})` }}
       >
         <motion.h2
           variants={headerVariants}

@@ -2,7 +2,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import AuthProvider from "./(components)/AuthProvider";
-import ReactProvider from "@/components/ReactProvider";
 
 export const metadata = {
   title: "GYM",
@@ -13,14 +12,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="site-wrapper">
-        <ReactProvider>
-          <AuthProvider>
-            <Navbar />
+        <AuthProvider>
+          <Navbar />
 
-            <div>{children}</div>
-          </AuthProvider>
-          <Footer />
-        </ReactProvider>
+          <div>{children}</div>
+        </AuthProvider>
+        <Footer />
       </body>
     </html>
   );
