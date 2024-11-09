@@ -13,7 +13,12 @@ const page = async () => {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: "linear-gradient(to right, black, #ffd9b4, black)",
+        paddingBottom: "3rem",
+      }}
+    >
       {/* <p>{session?.user?.email}</p>
       <p>{session?.user?.role}</p> */}
       <div
@@ -24,7 +29,7 @@ const page = async () => {
       </div>
 
       <WorkoutArticle />
-      {/* <Movement /> */}
+      <Movement />
     </div>
   );
 };

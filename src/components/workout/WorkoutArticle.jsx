@@ -35,8 +35,20 @@ const WorkoutArticle = () => {
         variée de cours adaptés à tous les niveaux : cardio, fitness,
         musculation, et fitcross. Que vous débutiez votre parcours ou cherchiez
         à relever de nouveaux défis, nos coachs passionnés sont là pour vous
-        guider et vous motiver. Rejoignez-nous pour transformer votre corps et
-        revitaliser votre esprit dans une ambiance dynamique et accueillante.
+        guider et vous motiver.
+        <br />
+        <br />
+        Pour maximiser vos efforts et atteindre vos objectifs, n'oubliez pas ces
+        conseils essentiels :<br />* Entraînez-vous aujourd'hui et reposez-vous
+        demain : le repos est aussi important que l'entraînement pour bien
+        récupérer.
+        <br />* Buvez beaucoup d'eau pour rester hydraté et performant pendant
+        vos séances. Dormez bien pour permettre à votre corps de se régénérer et
+        renforcer vos muscles. Mangez des aliments sains pour nourrir votre
+        corps et optimiser votre énergie. <br />* Rejoignez-nous chez Restez
+        Jeune pour transformer votre corps, revitaliser votre esprit et adopter
+        des habitudes de vie saines dans une ambiance dynamique et accueillante
+        !
       </motion.p>
     </motion.div>
   );

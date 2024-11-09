@@ -47,8 +47,7 @@ const page = () => {
     >
       <div
         className="flex flex-col items-center justify-center gap-16 h-screen bg-cover bg-no-repeat bg-center bg-fixed "
-        // style={{ backgroundImage: "url('/cardio/cardio1.jpg')" }}
-        style={{ backgroundImage: `url(${cardio && cardio[0].src})` }}
+        style={{ backgroundImage: `url(${cardio ? cardio[0].src : null})` }}
       >
         <motion.h2
           variants={headerVariants}
