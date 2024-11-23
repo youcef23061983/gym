@@ -1,9 +1,12 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import ShuffleGrid from "@/components/ShuffleGrid";
 
 const page = () => {
+  useEffect(() => {
+    document.title = "CrossFit";
+  }, []);
   const headerVariants = {
     hidden: { x: "20vw", opacity: 0 },
     visible: {

@@ -1,7 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect } from "react";
+
 const page = () => {
+  useEffect(() => {
+    document.title = "Classes";
+  }, []);
   const headerVariants = {
     hidden: { x: "20vw", opacity: 0 },
     visible: {

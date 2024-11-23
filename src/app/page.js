@@ -5,7 +5,9 @@ import FrontImage from "@/components/frontPage/FrontImage";
 import InstaHero from "@/components/frontPage/InstaHero";
 import PricingPlan from "@/components/frontPage/PricingPlan";
 
-const Home = () => {
+const Home = async () => {
+  const data = await fetch("http://localhost:3001/squareData");
+  const squareData = await data.json();
   return (
     <>
       <FrontImage />
@@ -18,7 +20,7 @@ const Home = () => {
 
       <PricingPlan />
 
-      <InstaHero />
+      <InstaHero squareData={squareData} />
     </>
   );
 };

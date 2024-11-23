@@ -1,19 +1,24 @@
 "use client";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+
 const page = () => {
+  useEffect(() => {
+    document.title = "About";
+  }, []);
   const headerVariants = {
-    hidden: { x: "20vw", opacity: 0 },
+    hidden: { width: "0" },
     visible: {
-      x: 0,
-      opacity: 1,
+      width: "100%",
       transition: { delay: 0.5, duration: 1, ease: "easeInOut" },
     },
   };
   const paragraphVariants = {
-    hidden: { x: "20vw", opacity: 0 },
+    hidden: { width: "0" },
+
     visible: {
-      x: 0,
-      opacity: 1,
+      width: "100%",
+
       transition: { delay: 0.8, duration: 1.5, ease: "easeInOut" },
     },
   };
@@ -45,6 +50,7 @@ const page = () => {
           initial="hidden"
           animate="visible"
           className="frontTitle"
+          style={{ overflow: "hidden", whiteSpace: "nowrap" }}
           viewport={{ once: true }}
         >
           À Propos de Restez Jeune{" "}
@@ -54,6 +60,7 @@ const page = () => {
           initial="hidden"
           animate="visible"
           className="frontP"
+          style={{ overflow: "hidden", whiteSpace: "nowrap" }}
           viewport={{ once: true }}
         >
           Ensemble, nous sommes plus forts.{" "}

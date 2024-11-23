@@ -3,8 +3,8 @@ import ShuffleGrid from "../ShuffleGrid";
 import Link from "next/link";
 
 const InstaHero = async () => {
-  let data = await fetch("http://localhost:3001/squareData");
-  let squareData = await data.json();
+  const data = await fetch("http://localhost:3001/squareData");
+  const squareData = await data.json();
   return (
     <section className="w-full px-4 py-12 mx-0 grid grid-cols-1 md:grid-cols-2 items-center gap-3">
       <div className="pricingDiv">

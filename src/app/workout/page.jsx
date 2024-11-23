@@ -5,6 +5,11 @@ import React from "react";
 import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import Movement from "@/components/workout/Movement";
+export const generateMetadata = () => {
+  return {
+    title: "Workout",
+  };
+};
 
 const page = async () => {
   const session = await getServerSession(options);

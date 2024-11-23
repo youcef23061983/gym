@@ -3,6 +3,11 @@ import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import Product from "@/components/Product";
 import ShopArticle from "@/components/ShopArticle";
+export const generateMetadata = () => {
+  return {
+    title: "Shop",
+  };
+};
 
 const page = async () => {
   const session = await getServerSession(options);
@@ -10,8 +15,8 @@ const page = async () => {
     redirect("/api/auth/signin?callbackUrl=/workout");
   }
 
-  let data = await fetch("http://localhost:3001/products");
-  let products = await data.json();
+  const data = await fetch("http://localhost:3001/products");
+  const products = await data.json();
 
   return (
     <div

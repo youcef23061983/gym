@@ -1,9 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const page = () => {
+  useEffect(() => {
+    document.title = "Contact";
+  }, []);
   const [formStatus, setFormStatus] = useState(null);
   const form = useRef();
   const [user, setUser] = useState({ name: "", email: "", comment: "" });
@@ -42,18 +45,18 @@ const page = () => {
       );
   };
   const headerVariants = {
-    hidden: { x: "20vw", opacity: 0 },
+    hidden: { width: "0" },
     visible: {
-      x: 0,
-      opacity: 1,
+      width: "100%",
       transition: { delay: 0.5, duration: 1, ease: "easeInOut" },
     },
   };
   const paragraphVariants = {
-    hidden: { x: "20vw", opacity: 0 },
+    hidden: { width: "0" },
+
     visible: {
-      x: 0,
-      opacity: 1,
+      width: "100%",
+
       transition: { delay: 0.8, duration: 1.5, ease: "easeInOut" },
     },
   };
@@ -86,6 +89,7 @@ const page = () => {
           animate="visible"
           className="frontTitle"
           viewport={{ once: true }}
+          style={{ overflow: "hidden", whiteSpace: "nowrap" }}
         >
           Contactez-nous
         </motion.h2>
@@ -94,6 +98,7 @@ const page = () => {
           initial="hidden"
           animate="visible"
           className="frontP"
+          style={{ overflow: "hidden", whiteSpace: "nowrap" }}
           viewport={{ once: true }}
         >
           Le premier pas vers un objectif est de le partager.{" "}

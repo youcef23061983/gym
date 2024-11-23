@@ -8,6 +8,9 @@ import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const Page = () => {
+  useEffect(() => {
+    document.title = "Testimonials";
+  }, []);
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {

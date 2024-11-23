@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const page = () => {
+  useEffect(() => {
+    document.title = "Cardio";
+  }, []);
   const [cardio, setTCardio] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
