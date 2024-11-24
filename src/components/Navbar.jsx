@@ -12,7 +12,6 @@ const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
   const navCenter = useRef(null);
   const pathname = usePathname();
-  console.log(pathname);
   useEffect(() => {
     setShowLinks(false);
   }, [pathname]);

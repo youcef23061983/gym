@@ -1,0 +1,18 @@
+export const data = [
+  { id: 1, src: "/homepage/frontinsta1.jpg" },
+  { id: 2, src: "/homepage/frontinsta2.jpg" },
+  { id: 3, src: "/homepage/frontinsta3.jpg" },
+  { id: 4, src: "/homepage/frontinsta4.jpg" },
+  { id: 5, src: "/homepage/frontinsta5.jpg" },
+  { id: 6, src: "/homepage/frontinsta6.jpg" },
+  { id: 7, src: "/homepage/frontinsta7.jpg" },
+  { id: 8, src: "/homepage/frontinsta8.jpg" },
+  { id: 9, src: "/homepage/frontinsta9.jpg" },
+  { id: 10, src: "/homepage/frontinsta10.jpg" },
+  { id: 11, src: "/homepage/frontinsta11.jpg" },
+  { id: 12, src: "/homepage/frontinsta12.jpg" },
+  { id: 13, src: "/homepage/frontinsta13.jpg" },
+  { id: 14, src: "/homepage/frontinsta14.jpg" },
+  { id: 15, src: "/homepage/frontinsta15.jpg" },
+  { id: 16, src: "/homepage/frontinsta16.jpg" },
+];

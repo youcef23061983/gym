@@ -1,6 +1,6 @@
 import Image from "next/image";
 const Movement = async () => {
-  let res = await fetch("http://localhost:3001/sport");
+  let res = await fetch("http://localhost:3000/workout/api");
   let data = await res.json();
   const dosCuisses = data ? data[0] : [];
   const dosCuissesHeader = data

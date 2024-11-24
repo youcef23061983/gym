@@ -2,9 +2,7 @@ import React from "react";
 import ShuffleGrid from "../ShuffleGrid";
 import Link from "next/link";
 
-const InstaHero = async () => {
-  const data = await fetch("http://localhost:3001/squareData");
-  const squareData = await data.json();
+const InstaHero = ({ squareData }) => {
   return (
     <section className="w-full px-4 py-12 mx-0 grid grid-cols-1 md:grid-cols-2 items-center gap-3">
       <div className="pricingDiv">
