@@ -7,10 +7,13 @@ const page = () => {
     document.title = "Cardio";
   }, []);
   const [cardio, setTCardio] = useState([]);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3000/classes/cardio/api");
+        // const res = await fetch("http://localhost:3000/classes/cardio/api");
+        const res = await fetch(`${apiUrl}/classes/cardio/api`);
         if (!res.ok) {
           throw Error("There is no product data");
         }

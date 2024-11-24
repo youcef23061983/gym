@@ -10,12 +10,16 @@ export const generateMetadata = () => {
 };
 
 const page = async () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   const session = await getServerSession(options);
   if (!session) {
     redirect("/api/auth/signin?callbackUrl=/workout");
   }
 
-  const data = await fetch("http://localhost:3000/shop/api");
+  // const data = await fetch("http://localhost:3000/shop/api");
+  const res = await fetch(`${apiUrl}/shop/api`);
+
   const products = await data.json();
 
   return (
