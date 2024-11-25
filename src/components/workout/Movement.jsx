@@ -1,8 +1,8 @@
 import Image from "next/image";
 const Movement = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
-  // const res = await fetch("http://localhost:3000/workout/api");
-  const res = await fetch(`${apiUrl}/workout/api`);
+  // const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+  const res = await fetch("http://localhost:3000/workout/api");
+  // const res = await fetch(`${apiUrl}/workout/api`);
 
   const data = await res.json();
   const dosCuisses = data ? data[0] : [];

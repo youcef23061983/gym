@@ -17,8 +17,8 @@ const page = async () => {
     redirect("/api/auth/signin?callbackUrl=/shop");
   }
 
-  // const data = await fetch("http://localhost:3000/shop/api");
-  const data = await fetch(`${apiUrl}/shop/api`);
+  const data = await fetch("http://localhost:3000/shop/api");
+  // const data = await fetch(`${apiUrl}/shop/api`);
 
   const products = await data.json();
 
