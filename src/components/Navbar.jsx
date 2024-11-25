@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -87,16 +87,12 @@ const Navbar = () => {
             {session?.user?.name?.slice(0, 6)}...
           </span>
 
-          <Link
-            className="link"
-            href="/api/auth/signout?callbackUrl=/"
-            onClick={() => signOut()}
-          >
+          <Link className="link" href="/api/auth/signout?callbackUrl=/">
             Logout
           </Link>
         </div>
       ) : (
-        <Link className="link" href="/api/auth/signin" onClick={() => signIn()}>
+        <Link className="link" href="/api/auth/signin">
           Login
         </Link>
       )}

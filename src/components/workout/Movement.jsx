@@ -1,11 +1,11 @@
 import Image from "next/image";
 const Movement = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  // let res = await fetch("http://localhost:3000/workout/api");
-  let res = await fetch(`${apiUrl}/workout/api`);
+  const res = await fetch("http://localhost:3000/workout/api");
+  // let res = await fetch(`${apiUrl}/workout/api`);
 
-  let data = await res.json();
+  const data = await res.json();
   const dosCuisses = data ? data[0] : [];
   const dosCuissesHeader = data
     ? [...new Set(data[1].map((item) => item.bodyPart))].join(" et ")
