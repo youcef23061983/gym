@@ -10,15 +10,15 @@ export const generateMetadata = () => {
 };
 
 const page = async () => {
-  // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"; // Fallback for local dev
 
   const session = await getServerSession(options);
   if (!session) {
     redirect("/api/auth/signin?callbackUrl=/shop");
   }
 
-  const data = await fetch("http://localhost:3000/shop/api");
-  // const data = await fetch(`${apiUrl}/shop/api`);
+  // const data = await fetch("http://localhost:3000/shop/api");
+  const data = await fetch(`${apiUrl}/shop/api`);
 
   const products = await data.json();
 
