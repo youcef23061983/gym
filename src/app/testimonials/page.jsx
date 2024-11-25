@@ -118,13 +118,13 @@ const Page = () => {
   );
 };
 const TestimonilasSlider = () => {
-  // const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const [testimonials, setTestimonials] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3000/testimonials/api");
-        // const res = await fetch(`${apiUrl}/testimonials/api`);
+        // const res = await fetch("http:/localhost:3000/testimonials/api");
+        const res = await fetch(`${apiUrl}/testimonials/api`);
 
         if (!res.ok) {
           throw Error("There is no product data");
@@ -143,7 +143,9 @@ const TestimonilasSlider = () => {
     target: container,
     offset: ["start start", "end end"],
   });
-
+  if (!apiUrl) {
+    return null;
+  }
   return (
     <main ref={container}>
       {testimonials?.map((project, i) => {

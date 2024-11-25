@@ -10,29 +10,26 @@ export const generateMetadata = () => {
     title: "Shop",
   };
 };
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 async function getData() {
-  const response = await fetch("http://localhost:3000/shop/api", {
-    next: { revalidate: 10 }, // Revalidate data every 10 seconds (ISR)
-  });
+  const response = await fetch(`${apiUrl}/shop/api`);
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
   return response.json();
 }
-const page = async () => {
-  // const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"; // Fallback for local dev
 
+const page = async () => {
   const session = await getServerSession(options);
   if (!session) {
     redirect("/api/auth/signin?callbackUrl=/shop");
   }
 
-  // const data = await fetch("http://localhost:3000/shop/api");
-  // // const data = await fetch(`${apiUrl}/shop/api`);
-
-  // const products = await data.json();
   const products = await getData();
-
+  if (!apiUrl) {
+    return null;
+  }
   return (
     <div
       style={{
