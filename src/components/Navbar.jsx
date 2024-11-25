@@ -1,6 +1,5 @@
+"use client";
 export const dynamic = "force-dynamic";
-
-("use client");
 
 import { useSession } from "next-auth/react";
 import Image from "next/image";

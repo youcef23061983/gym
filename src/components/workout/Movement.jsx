@@ -1,10 +1,20 @@
 import Image from "next/image";
+async function getData() {
+  const response = await fetch("http://localhost:3000/workout/api", {
+    next: { revalidate: 10 }, // Revalidate data every 10 seconds (ISR)
+  });
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return response.json();
+}
 const Movement = async () => {
-  // const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
-  const res = await fetch("http://localhost:3000/workout/api");
-  // const res = await fetch(`${apiUrl}/workout/api`);
+  // // const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+  // const res = await fetch("http://localhost:3000/workout/api");
+  // // const res = await fetch(`${apiUrl}/workout/api`);
 
-  const data = await res.json();
+  // const data = await res.json();
+  const data = await getData();
   const dosCuisses = data ? data[0] : [];
   const dosCuissesHeader = data
     ? [...new Set(data[1].map((item) => item.bodyPart))].join(" et ")
