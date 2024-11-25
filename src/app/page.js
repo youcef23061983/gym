@@ -8,8 +8,8 @@ import PricingPlan from "@/components/frontPage/PricingPlan";
 const Home = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  // const data = await fetch("http://localhost:3000/api/insta");
-  const data = await fetch(`${apiUrl}/api/insta`);
+  const data = await fetch("http://localhost:3000/api/insta");
+  // const data = await fetch(`${apiUrl}/api/insta`);
   const squareData = await data.json();
   return (
     <>

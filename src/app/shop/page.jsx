@@ -18,7 +18,7 @@ const page = async () => {
   }
 
   // const data = await fetch("http://localhost:3000/shop/api");
-  const res = await fetch(`${apiUrl}/shop/api`);
+  const data = await fetch(`${apiUrl}/shop/api`);
 
   const products = await data.json();
 
