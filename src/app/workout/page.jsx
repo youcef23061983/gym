@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import WorkoutArticle from "@/components/workout/WorkoutArticle";
 import WorkoutTitle from "@/components/workout/WorkoutTitle";
 import { getServerSession } from "next-auth";

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
@@ -10,7 +12,7 @@ export const generateMetadata = () => {
 };
 
 const page = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"; // Fallback for local dev
+  // const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"; // Fallback for local dev
 
   const session = await getServerSession(options);
   if (!session) {
