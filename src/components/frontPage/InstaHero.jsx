@@ -2,28 +2,28 @@ import React from "react";
 import ShuffleGrid from "../ShuffleGrid";
 import Link from "next/link";
 
-async function getData() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+// async function getData() {
+//   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  const response = await fetch(`${apiUrl}/api/insta`, {
-    next: { revalidate: 0 },
-  });
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return response.json();
-}
+//   const response = await fetch(`${apiUrl}/api/insta`, {
+//     next: { revalidate: 0 },
+//   });
+//   if (!response.ok) {
+//     throw new Error("Failed to fetch data");
+//   }
+//   return response.json();
+// }
 
 const InstaHero = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  // const data = await fetch("http://localhost:3000/api/insta");
-  // // const data = await fetch(`${apiUrl}/api/insta`);
-  // const squareData = await data.json();
-  const squareData = await getData();
-  if (!apiUrl) {
-    return null;
-  }
+  // // const data = await fetch("http://localhost:3000/api/insta");
+  // // // const data = await fetch(`${apiUrl}/api/insta`);
+  // // const squareData = await data.json();
+  // const squareData = await getData();
+  // if (!apiUrl) {
+  //   return null;
+  // }
   return (
     <section className="w-full px-4 py-12 mx-0 grid grid-cols-1 md:grid-cols-2 items-center gap-3">
       <div className="pricingDiv">
@@ -46,7 +46,7 @@ const InstaHero = async () => {
           REJOIGNEZ-NOUS
         </Link>
       </div>
-      <ShuffleGrid squareData={squareData} />
+      <ShuffleGrid />
     </section>
   );
 };
