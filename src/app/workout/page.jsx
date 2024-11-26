@@ -5,6 +5,8 @@ import React from "react";
 import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import Movement from "@/components/workout/Movement";
+export const dynamic = "force-dynamic";
+
 export const generateMetadata = () => {
   return {
     title: "Workout",

@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import Product from "@/components/Product";
 import ShopArticle from "@/components/ShopArticle";
 import { BASE_API_URL } from "@/utils/Url";
+export const dynamic = "force-dynamic";
+
 export const generateMetadata = () => {
   return {
     title: "Shop",
