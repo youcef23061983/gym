@@ -73,6 +73,8 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState, useRef } from "react";
 
 const ShuffleGrid = ({ squareData }) => {
+  console.log(squareData);
+
   const [shuffledData, setShuffledData] = useState([]); // Store raw shuffled data
   const timeoutRef = useRef(null);
 
