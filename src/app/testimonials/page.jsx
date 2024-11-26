@@ -1,8 +1,6 @@
 "use client";
-
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-
 import Image from "next/image";
 import "./testimonial.css";
 import { useTransform, motion, useScroll } from "framer-motion";
@@ -56,17 +54,17 @@ const Page = () => {
 
   return (
     <div>
-      <p>{session?.user?.email}</p>
+      {/* <p>{session?.user?.email}</p>
       <p>{session?.user?.role}</p>
-      <p>{session?.user?.name}</p>
-      {session?.user?.image && (
+      <p>{session?.user?.name}</p> */}
+      {/* {session?.user?.image && (
         <Image
           src={session.user.image}
           alt="User Profile"
           width={50}
           height={50}
         />
-      )}
+      )} */}
 
       <div
         className="flex flex-col items-center justify-center gap-16 h-screen bg-cover bg-no-repeat bg-center bg-fixed "

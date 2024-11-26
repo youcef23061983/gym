@@ -1,5 +1,4 @@
 "use client";
-
 import { animate, useInView, useIsomorphicLayoutEffect } from "framer-motion";
 import { useRef } from "react";
 

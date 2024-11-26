@@ -1,5 +1,4 @@
 "use client";
-
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { motion } from "framer-motion";
 import Link from "next/link";
