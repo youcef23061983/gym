@@ -1,19 +1,17 @@
-export const dynamic = "force-dynamic";
-
 import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import Product from "@/components/Product";
 import ShopArticle from "@/components/ShopArticle";
+import { BASE_API_URL } from "@/utils/Url";
 export const generateMetadata = () => {
   return {
     title: "Shop",
   };
 };
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 async function getData() {
-  const response = await fetch(`${apiUrl}/shop/api`);
+  const response = await fetch(`${BASE_API_URL}/shop/api`);
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -21,15 +19,16 @@ async function getData() {
 }
 
 const page = async () => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   const session = await getServerSession(options);
   if (!session) {
     redirect("/api/auth/signin?callbackUrl=/shop");
   }
 
   const products = await getData();
-  if (!apiUrl) {
-    return null;
-  }
+
   return (
     <div
       style={{

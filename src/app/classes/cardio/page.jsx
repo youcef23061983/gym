@@ -1,19 +1,22 @@
 "use client";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { BASE_API_URL } from "@/utils/Url";
 
 const page = () => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   useEffect(() => {
     document.title = "Cardio";
   }, []);
   const [cardio, setTCardio] = useState([]);
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         // const res = await fetch("http://localhost:3000/classes/cardio/api");
-        const res = await fetch(`${apiUrl}/classes/cardio/api`);
+        const res = await fetch(`${BASE_API_URL}/classes/cardio/api`);
         if (!res.ok) {
           throw Error("There is no product data");
         }
@@ -59,9 +62,7 @@ const page = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   };
-  if (!apiUrl) {
-    return null;
-  }
+
   return (
     <div
       style={{

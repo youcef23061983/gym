@@ -4,8 +4,22 @@ import Features from "@/components/frontPage/Features";
 import FrontImage from "@/components/frontPage/FrontImage";
 import InstaHero from "@/components/frontPage/InstaHero";
 import PricingPlan from "@/components/frontPage/PricingPlan";
+import { BASE_API_URL } from "@/utils/Url";
+
+async function getData() {
+  const response = await fetch(`${BASE_API_URL}/api/insta`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return response.json();
+}
 
 const Home = async () => {
+  if (!BASE_API_URL) {
+    return null;
+  }
+  const squareData = await getData();
+
   return (
     <>
       <FrontImage />
@@ -18,7 +32,7 @@ const Home = async () => {
 
       <PricingPlan />
 
-      <InstaHero />
+      <InstaHero squareData={squareData} />
     </>
   );
 };

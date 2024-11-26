@@ -1,14 +1,16 @@
 import Image from "next/image";
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
+import { BASE_API_URL } from "@/utils/Url";
 async function getData() {
-  const response = await fetch(`${apiUrl}/workout/api`);
+  const response = await fetch(`${BASE_API_URL}/workout/api`);
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
   return response.json();
 }
 const Movement = async () => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   // const res = await fetch("http://localhost:3000/workout/api");
   // // const res = await fetch(`${apiUrl}/workout/api`);
 
@@ -30,9 +32,7 @@ const Movement = async () => {
   const bicepsheader = data
     ? [...new Set(data[3].map((item) => item.bodyPart))].join(" et ")
     : [];
-  if (!apiUrl) {
-    return null;
-  }
+
   return (
     <>
       <div style={{ marginBottom: "70px" }}>
