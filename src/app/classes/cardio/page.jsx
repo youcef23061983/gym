@@ -15,7 +15,6 @@ const page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const res = await fetch("http://localhost:3000/classes/cardio/api");
         const res = await fetch(`${BASE_API_URL}/classes/cardio/api`);
         if (!res.ok) {
           throw Error("There is no product data");
