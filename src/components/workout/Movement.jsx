@@ -11,10 +11,7 @@ const Movement = async () => {
   if (!BASE_API_URL) {
     return null;
   }
-  // const res = await fetch("http://localhost:3000/workout/api");
-  // // const res = await fetch(`${apiUrl}/workout/api`);
 
-  // const data = await res.json();
   const data = await getData();
   const dosCuisses = data ? data[0] : [];
   const dosCuissesHeader = data

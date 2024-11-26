@@ -56,7 +56,7 @@ const Page = () => {
 
   return (
     <div>
-      {/* <p>{session?.user?.email}</p>
+      <p>{session?.user?.email}</p>
       <p>{session?.user?.role}</p>
       <p>{session?.user?.name}</p>
       {session?.user?.image && (
@@ -66,7 +66,7 @@ const Page = () => {
           width={50}
           height={50}
         />
-      )} */}
+      )}
 
       <div
         className="flex flex-col items-center justify-center gap-16 h-screen bg-cover bg-no-repeat bg-center bg-fixed "
