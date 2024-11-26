@@ -17,9 +17,9 @@ async function getData() {
 
 const Home = async () => {
   const squareData = await getData();
-  // if (!BASE_API_URL) {
-  //   return null;
-  // }
+  if (!BASE_API_URL) {
+    return null;
+  }
 
   return (
     <>
