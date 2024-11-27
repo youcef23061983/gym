@@ -29,7 +29,7 @@ const page = () => {
 
     emailjs
       .sendForm("service_vgkozvc", "template_sv5btsr", form.current, {
-        publicKey: "_ISOAOSTfbmyXLWd5",
+        publicKey: process.env.NEXT_PUBLIC_CONTACT_KEY,
       })
       .then(
         () => {
