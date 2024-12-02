@@ -13,10 +13,10 @@ export const generateMetadata = () => {
 };
 
 const page = async () => {
-  const session = await getServerSession(options);
-  if (!session) {
-    redirect("/api/auth/signin?callbackUrl=/workout");
-  }
+  // const session = await getServerSession(options);
+  // if (!session) {
+  //   redirect("/api/auth/signin?callbackUrl=/workout");
+  // }
 
   return (
     <div

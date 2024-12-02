@@ -23,10 +23,10 @@ const page = async () => {
   if (!BASE_API_URL) {
     return null;
   }
-  const session = await getServerSession(options);
-  if (!session) {
-    redirect("/api/auth/signin?callbackUrl=/shop");
-  }
+  // const session = await getServerSession(options);
+  // if (!session) {
+  //   redirect("/api/auth/signin?callbackUrl=/shop");
+  // }
 
   const products = await getData();
 
