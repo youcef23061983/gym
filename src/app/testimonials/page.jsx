@@ -11,12 +11,12 @@ const Page = () => {
   useEffect(() => {
     document.title = "Testimonials";
   }, []);
-  // const { data: session } = useSession({
-  //   required: true,
-  //   onUnauthenticated() {
-  //     redirect("/api/auth/signin?callbackUrl=/testimonials");
-  //   },
-  // });
+  const { data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect("/api/auth/signin?callbackUrl=/testimonials");
+    },
+  });
 
   const headerVariants = {
     hidden: { x: "20vw", opacity: 0 },
