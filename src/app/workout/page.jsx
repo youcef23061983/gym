@@ -25,8 +25,8 @@ const page = async () => {
         paddingBottom: "3rem",
       }}
     >
-      <p>{session?.user?.email}</p>
-      <p>{session?.user?.role}</p>
+      {/* <p>{session?.user?.email}</p>
+      <p>{session?.user?.role}</p> */}
       <div
         className="flex flex-col items-center justify-center gap-16 h-screen bg-cover bg-no-repeat bg-center bg-fixed "
         style={{ backgroundImage: "url('/workout.jpg')" }}
