@@ -41,7 +41,7 @@ export const Footer = () => {
       </div>
 
       <div className="rightsLogo">
-        <span style={{ marginBottom: "0", fontSize: "15px" }}>
+        <span style={{ marginBottom: "3rem", fontSize: "15px" }}>
           © 2024 GYM Rester Jeune Tous droits réservés
         </span>
         <div className="footerLogos">
