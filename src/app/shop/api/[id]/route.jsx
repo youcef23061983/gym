@@ -6,7 +6,7 @@ export async function GET(request, { params }) {
 
   try {
     // const pack = products.find((comment) => comment.id === parseInt(id));
-    const product = Products.find((pro) => pro.id === parseInt(id));
+    const product = Products.find((pro) => pro.id === id);
     return new Response(JSON.stringify(product));
   } catch (error) {
     console.error("Error fetching package details:", error);
