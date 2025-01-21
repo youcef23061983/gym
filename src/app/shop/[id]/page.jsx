@@ -15,7 +15,7 @@ export async function generateStaticParams() {
     }
 
     return posts.map((post) => ({
-      id: post.id,
+      id: post.id.toString(),
     }));
   } catch (error) {
     console.error("Error fetching data in generateStaticParams:", error);
