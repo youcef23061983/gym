@@ -12,7 +12,7 @@ export const generateMetadata = () => {
 };
 
 async function getData() {
-  const response = await fetch(`${BASE_API_URL}/shop/api`);
+  const response = await fetch(`${BASE_API_URL}/api/shop`);
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }

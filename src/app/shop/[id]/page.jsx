@@ -28,7 +28,7 @@ const page = async ({ params: { id } }) => {
     return null;
   }
   async function getDetailData(id) {
-    const response = await fetch(`${BASE_API_URL}/shop/api/${id}`);
+    const response = await fetch(`${BASE_API_URL}/api/shop/${id}`);
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
