@@ -24,6 +24,9 @@ export async function generateStaticParams() {
 }
 
 const page = async ({ params: { id } }) => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   async function getDetailData(id) {
     const response = await fetch(`${BASE_API_URL}/shop/api/${id}`);
     if (!response.ok) {
