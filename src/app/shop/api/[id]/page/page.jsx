@@ -1,24 +1,39 @@
 import { BASE_API_URL } from "@/utils/Url";
 export async function generateStaticParams() {
-  const response = await fetch(`${BASE_API_URL}/shop/api`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
+  try {
+    const response = await fetch(`${BASE_API_URL}/shop/api`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const posts = await response.json();
+
+    console.log(posts); // Log the response to check the data
+
+    if (!posts || posts.length === 0) {
+      console.error("No posts found");
+      return [];
+    }
+
+    return posts.map((post) => ({
+      id: post.id.toString(),
+    }));
+  } catch (error) {
+    console.error("Error fetching data in generateStaticParams:", error);
+    return [];
   }
-  const posts = await response.json();
-  return posts.map((post) => ({
-    id: post.id.toString(),
-  }));
 }
+
 const page = async ({ params: { id } }) => {
-  async function getDetailData({ params: { id } }) {
+  async function getDetailData(id) {
     const response = await fetch(`${BASE_API_URL}/shop/api/${id}`);
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
     return response.json();
   }
-  const product = await getDetailData({ params: { id } });
-  if (!BASE_API_URL) {
+
+  const product = await getDetailData(id); // Pass 'id' directly
+  if (!product) {
     return null;
   }
   return (
