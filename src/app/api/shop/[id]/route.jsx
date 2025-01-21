@@ -5,7 +5,6 @@ export async function GET(request, { params }) {
   const { id } = params;
 
   try {
-    // const pack = products.find((comment) => comment.id === parseInt(id));
     const product = Products.find((pro) => pro.id === parseInt(id));
     return new Response(JSON.stringify(product));
   } catch (error) {

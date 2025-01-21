@@ -35,7 +35,7 @@ const page = async ({ params: { id } }) => {
     return response.json();
   }
 
-  const product = await getDetailData(id); // Pass 'id' directly
+  const product = await getDetailData(id);
   if (!product) {
     return null;
   }
