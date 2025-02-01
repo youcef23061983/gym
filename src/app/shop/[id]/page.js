@@ -1,4 +1,4 @@
-// import { BASE_API_URL } from "@/utils/Url";
+import { BASE_API_URL } from "@/utils/Url";
 // export async function generateStaticParams() {
 //   if (!BASE_API_URL) {
 //     return null;
@@ -14,71 +14,28 @@
 //   }));
 // }
 
-// const page = async ({ params: { id } }) => {
-//   if (!BASE_API_URL) {
-//     return null;
-//   }
-//   async function getDetailData(id) {
-//     const response = await fetch(`${BASE_API_URL}/api/shop/${id}`);
-//     if (!response.ok) {
-//       throw new Error("Failed to fetch data");
-//     }
-//     return response.json();
-//   }
-
-//   const product = await getDetailData(id);
-//   if (!product) {
-//     return null;
-//   }
-//   return (
-//     <div>
-//       <h1>{product.title}</h1>
-//       <h1>{product.price}</h1>
-//     </div>
-//   );
-// };
-
-// export default page;
-
-import { BASE_API_URL } from "@/utils/Url";
-
-export async function generateStaticParams() {
-  const response = await fetch(`${BASE_API_URL}/api/shop`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  const posts = await response.json();
-
-  return posts.map((post) => ({
-    id: post.id,
-  }));
-}
-
 const page = async ({ params: { id } }) => {
   if (!BASE_API_URL) {
     return null;
   }
-
   async function getDetailData(id) {
     const response = await fetch(`${BASE_API_URL}/api/shop/${id}`);
     if (!response.ok) {
-      throw new Error("Failed to fetch detail data");
+      throw new Error("Failed to fetch data");
     }
     return response.json();
   }
 
-  try {
-    const data = await getDetailData(id);
-    return (
-      <div>
-        <h1>{data.title}</h1>
-        <p>{data.description}</p>
-      </div>
-    );
-  } catch (error) {
-    console.error(error);
-    return <div>Error loading data</div>;
+  const product = await getDetailData(id);
+  if (!product) {
+    return null;
   }
+  return (
+    <div>
+      <h1>{product.title}</h1>
+      <h1>{product.price}</h1>
+    </div>
+  );
 };
 
 export default page;
