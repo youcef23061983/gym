@@ -18,7 +18,7 @@ export default async function Image() {
     "Explorez nos entraînements à Restez Jeune. Des séances variées pour tous les niveaux, adaptées à vos objectifs de fitness.";
 
   const interSemiBold = await readFile(
-    join(process.cwd(), "assets/Inter-SemiBold.ttf")
+    join(process.cwd(), "fonts/inter-semi-bold.ttf")
   );
 
   const backgroundImagePath = join(process.cwd(), `public${backgroundimg}`);

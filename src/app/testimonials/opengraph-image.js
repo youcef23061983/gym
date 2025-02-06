@@ -16,7 +16,7 @@ export default async function Image() {
   const title = "Témoignages – Restez Jeune Gym";
 
   const interSemiBold = await readFile(
-    join(process.cwd(), "assets/Inter-SemiBold.ttf")
+    join(process.cwd(), "fonts/inter-semi-bold.ttf")
   );
 
   const backgroundImagePath = join(process.cwd(), `public${backgroundimg}`);
