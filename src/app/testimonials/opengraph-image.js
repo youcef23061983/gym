@@ -1,3 +1,4 @@
+import { BASE_API_URL } from "@/utils/Url";
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -11,7 +12,7 @@ export const size = {
 export const contentType = "image/jpg";
 
 export default async function Image() {
-  const backgroundimg = "/testimonial/testimonialheader.jpg";
+  const backgroundimg = `${BASE_API_URL}/testimonial/testimonialheader.jpg`;
   const title = "Témoignages – Restez Jeune Gym";
 
   const interSemiBold = await readFile(

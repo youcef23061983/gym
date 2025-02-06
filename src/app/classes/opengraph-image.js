@@ -1,3 +1,4 @@
+import { BASE_API_URL } from "@/utils/Url";
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -11,7 +12,8 @@ export const size = {
 export const contentType = "image/jpg";
 
 export default async function Image() {
-  const backgroundimg = "/classes.jpg";
+  //   const backgroundimg = "/classes.jpg";
+  const backgroundimg = `${BASE_API_URL}/classes.jpg`;
   const title =
     "Cours à Restez Jeune – Bodybuilding, CrossFit, Fitness et Cardio";
 

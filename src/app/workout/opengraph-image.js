@@ -1,3 +1,4 @@
+import { BASE_API_URL } from "@/utils/Url";
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -11,7 +12,7 @@ export const size = {
 export const contentType = "image/jpg";
 
 export default async function Image() {
-  const backgroundimg = "/workout.jpg";
+  const backgroundimg = `${BASE_API_URL}/workout.jpg`;
   const title = "Workout – Restez Jeune Gym";
   const description =
     "Explorez nos entraînements à Restez Jeune. Des séances variées pour tous les niveaux, adaptées à vos objectifs de fitness.";
