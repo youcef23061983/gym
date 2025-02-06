@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AnimationClass from "./AnimationClass";
+import { BASE_API_URL } from "@/utils/Url";
 export const metadata = {
   title: "Cours à Restez Jeune – Bodybuilding, CrossFit, Fitness et Cardio",
   description:
