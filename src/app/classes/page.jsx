@@ -1,8 +1,35 @@
 import Link from "next/link";
 import AnimationClass from "./AnimationClass";
 export const metadata = {
-  title: "Classes",
-  description: "This is the classes page of the gym application",
+  title: "Cours à Restez Jeune – Bodybuilding, CrossFit, Fitness et Cardio",
+  description:
+    "Découvrez nos cours à Restez Jeune, incluant bodybuilding, crossfit, fitness et cardio. Nos entraîneurs experts vous guideront à travers des entraînements adaptés à tous les niveaux pour vous aider à atteindre vos objectifs de fitness.",
+  openGraph: {
+    title: "Cours à Restez Jeune – Bodybuilding, CrossFit, Fitness et Cardio",
+    description:
+      "Découvrez nos cours à Restez Jeune, incluant bodybuilding, crossfit, fitness et cardio. Des entraînements adaptés à tous les niveaux pour améliorer votre force et endurance.",
+    url: `${BASE_API_URL}/classes`,
+
+    images: [
+      {
+        url: "/classes.jpg",
+        width: 800,
+        height: 600,
+        alt: "Classes Image",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cours à Restez Jeune – Bodybuilding, CrossFit, Fitness et Cardio",
+    description:
+      "Découvrez nos cours à Restez Jeune, incluant bodybuilding, crossfit, fitness et cardio. Des entraînements adaptés à tous les niveaux pour améliorer votre force et endurance.",
+    image: "/classes.jpg",
+  },
+  robots: "index, follow",
+  keywords:
+    "gym, workout, classes, fitness, bodybuilding, cardio, crossfit, personal training, training programs",
+  author: "Gym",
 };
 
 const page = () => {

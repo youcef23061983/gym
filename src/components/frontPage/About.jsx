@@ -14,7 +14,7 @@ const About = () => {
       <div className="aboutArticle">
         <h2> Notre Engagement pour Votre Aventure Fitness</h2>
         <p>
-          Chez Rester Jeune, nous croyons que le fitness est un mode de vie
+          Chez Restez Jeune, nous croyons que le fitness est un mode de vie
           accessible à tous. Notre salle moderne offre une variété d'équipements
           et de cours adaptés à chaque niveau, avec des entraîneurs certifiés
           prêts à vous guider. Nous créons un environnement accueillant et
