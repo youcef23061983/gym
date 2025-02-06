@@ -18,10 +18,6 @@ export default async function Image() {
     "Cours à Restez Jeune – Bodybuilding, CrossFit, Fitness et Cardio";
 
   try {
-    // Load the Inter-SemiBold.ttf font file
-    const fontPath = join(process.cwd(), "assets/Inter-SemiBold.ttf");
-    const interSemiBold = await readFile(fontPath);
-
     // Load the background image
     const backgroundImagePath = join(
       process.cwd(),
@@ -60,21 +56,13 @@ export default async function Image() {
       ),
       {
         ...size,
-        fonts: [
-          {
-            name: "Inter",
-            data: interSemiBold,
-            style: "normal",
-            weight: 400,
-          },
-        ],
+        // No custom fonts are used
       }
     );
   } catch (error) {
-    // Handle errors (e.g., missing files or invalid paths)
     console.error("Error generating OpenGraph image:", error);
 
-    // Fallback to a simple image response without the font
+    // Fallback to a simple image response
     return new ImageResponse(
       (
         <div
