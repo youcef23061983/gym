@@ -2,25 +2,19 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "Home Page  Acme";
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
+export const alt = "Home Page Acme";
+export const size = { width: 1200, height: 630 };
 export const contentType = "image/jpg";
 
 export default async function Image() {
-  const backgroundimg = "/workout.jpg";
   const title = "Workout – Restez Jeune Gym";
-  const description =
-    "Explorez nos entraînements à Restez Jeune. Des séances variées pour tous les niveaux, adaptées à vos objectifs de fitness.";
 
   const interSemiBold = await readFile(
     join(process.cwd(), "fonts/inter-semi-bold.ttf")
   );
 
-  const backgroundImagePath = join(process.cwd(), `public${backgroundimg}`);
+  // Correct image path (only if the file is local)
+  const backgroundImagePath = join(process.cwd(), "public", "workout.jpg");
   const backgroundImage = await readFile(backgroundImagePath);
 
   return new ImageResponse(
