@@ -11,8 +11,9 @@ export const size = {
 export const contentType = "image/jpg";
 
 export default async function Image() {
-  const backgroundimg = "/testimonial/testimonialheader.jpg";
-  const title = "Témoignages – Restez Jeune Gym";
+  const backgroundimg = "/classes.jpg";
+  const title =
+    "Cours à Restez Jeune – Bodybuilding, CrossFit, Fitness et Cardio";
 
   const interSemiBold = await readFile(
     join(process.cwd(), "fonts/inter-semi-bold.ttf")
