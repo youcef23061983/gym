@@ -1,5 +1,4 @@
 const db = require("../../../../lib/db.js");
-export const dynamic = "force-dynamic"; // Ensure dynamic runtime
 
 export async function GET() {
   try {
