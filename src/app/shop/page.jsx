@@ -5,6 +5,7 @@ import Product from "@/components/Product";
 import ShopArticle from "@/components/ShopArticle";
 import { BASE_API_URL } from "@/utils/Url";
 import { headers } from "next/headers";
+const db = require("../../../lib/db.js");
 
 const CRAWLER_USER_AGENTS = [
   "googlebot",
@@ -58,18 +59,29 @@ export const generateMetadata = () => {
   };
 };
 
+// async function getData() {
+//   const response = await fetch(`${BASE_API_URL}/api/shop`);
+//   if (!response.ok) {
+//     throw new Error("Failed to fetch data");
+//   }
+//   return response.json();
+// }
 async function getData() {
-  const response = await fetch(`${BASE_API_URL}/api/shop`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
+  try {
+    const products = await db.product.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    return products;
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    return [];
   }
-  return response.json();
 }
 
 const page = async () => {
-  if (!BASE_API_URL) {
-    return null;
-  }
+  // if (!BASE_API_URL) {
+  //   return null;
+  // }
 
   const isCrawlerRequest = isCrawler();
 
