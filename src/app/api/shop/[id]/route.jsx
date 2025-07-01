@@ -1,4 +1,4 @@
-const db = require("../../../../../lib/db.js");
+// const db = require("../../../../../lib/db.js");
 
 // export async function GET(request, { params }) {
 //   try {
@@ -19,9 +19,9 @@ const db = require("../../../../../lib/db.js");
 //   }
 // }
 
-export async function GET(request, { params }) {
-  const product = await db.product.findUnique({
-    where: { id: parseInt(params.id) },
-  });
-  return Response.json(product);
-}
+// export async function GET(request, { params }) {
+//   const product = await db.product.findUnique({
+//     where: { id: parseInt(params.id) },
+//   });
+//   return Response.json(product);
+// }
