@@ -1,4 +1,6 @@
 const db = require("../../../../../lib/db.js");
+export const dynamic = "force-dynamic"; // Required!
+
 export async function GET() {
   try {
     const cardioImages = await db.cardio.findMany();

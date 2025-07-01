@@ -1,4 +1,5 @@
 const db = require("../../../../lib/db.js");
+export const dynamic = "force-dynamic"; // Required!
 
 // GET all testimonials
 export async function GET() {
