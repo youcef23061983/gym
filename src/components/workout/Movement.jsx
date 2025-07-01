@@ -13,23 +13,28 @@ const Movement = async () => {
   }
 
   const data = await getData();
-  const dosCuisses = data ? data[0] : [];
-  const dosCuissesHeader = data
-    ? [...new Set(data[1].map((item) => item.bodyPart))].join(" et ")
-    : [];
-  const poitrineEpaule = data ? data[1] : [];
-  const poitrineEpauleHeader = data
-    ? [...new Set(data[1].map((item) => item.bodyPart))].join(" et ")
-    : [];
-  const cuisses = data ? data[2] : [];
-  const cuissesHeader = data
-    ? [...new Set(data[2].map((item) => item.bodyPart))].join(" et ")
-    : [];
-  const biceps = data ? data[3] : [];
-  const bicepsheader = data
-    ? [...new Set(data[3].map((item) => item.bodyPart))].join(" et ")
+  const dos = data ? data.filter((item) => item.includes("dos")) : [];
+
+  const poitrineEpaule = data
+    ? data.filter(
+        (item) => item.includes("Poitrine") || item.includes("Épaules")
+      )
     : [];
 
+  const cuisses = data
+    ? data.filter(
+        (item) => item.includes("Cuisses") || item.includes("Mollets")
+      )
+    : [];
+
+  const biceps = data
+    ? data.filter(
+        (item) =>
+          item.includes("Biceps") ||
+          item.includes("trapezes") ||
+          item.includes("avant-bras")
+      )
+    : [];
   return (
     <>
       <div style={{ marginBottom: "70px" }}>
@@ -40,9 +45,9 @@ const Movement = async () => {
             textDecoration: "underLine",
           }}
         >
-          {dosCuissesHeader}
+          Dos
         </h2>
-        {dosCuisses?.map((work) => {
+        {dos?.map((work) => {
           const {
             equipment,
             gifUrl,
@@ -87,7 +92,7 @@ const Movement = async () => {
             textDecoration: "underLine",
           }}
         >
-          {poitrineEpauleHeader}
+          Poitrine et Épaules
         </h2>
         {poitrineEpaule?.map((work) => {
           const {
@@ -134,7 +139,7 @@ const Movement = async () => {
             textDecoration: "underLine",
           }}
         >
-          {cuissesHeader}
+          Cuisses et Mollets
         </h2>
         {cuisses?.map((work) => {
           const {
@@ -181,7 +186,7 @@ const Movement = async () => {
             textDecoration: "underLine",
           }}
         >
-          {bicepsheader}
+          Biceps et Trapezes et Avant-bras
         </h2>
         {biceps?.map((work) => {
           const {

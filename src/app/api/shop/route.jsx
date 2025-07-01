@@ -1,6 +1,17 @@
-import { Products } from "./data";
-import { NextResponse } from "next/server";
+const db = require("../../../../lib/db.js");
 
-export async function GET(request) {
-  return NextResponse.json(Products);
+// GET all products
+export async function GET() {
+  try {
+    const products = await db.product.findMany();
+    return new Response(JSON.stringify(products), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Failed to fetch products" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }

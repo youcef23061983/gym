@@ -1,19 +1,19 @@
-import { NextResponse } from "next/server";
-import { Products } from "../data";
+const db = require("../../../../../lib/db.js");
 
 export async function GET(request, { params }) {
-  const { id } = params;
-
   try {
-    const product = Products.find((pro) => pro.id === parseInt(id));
-    // const product = data?.find((pro) => pro.id === id);
+    const product = await db.product.findUnique({
+      where: { id: parseInt(params.id) },
+    });
 
-    return new Response(JSON.stringify(product));
-    // return NextResponse.json(product);
+    if (!product) {
+      return Response.json({ error: "Product not found" }, { status: 404 });
+    }
+
+    return Response.json(product);
   } catch (error) {
-    console.error("Error fetching package details:", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
+    return Response.json(
+      { error: "Failed to fetch product details" },
       { status: 500 }
     );
   }
