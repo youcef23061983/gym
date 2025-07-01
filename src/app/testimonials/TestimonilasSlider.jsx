@@ -13,7 +13,6 @@ const TestimonilasSlider = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const res = await fetch("http:/localhost:3000/testimonials/api");
         const res = await fetch(`${BASE_API_URL}/testimonials/api`);
 
         if (!res.ok) {

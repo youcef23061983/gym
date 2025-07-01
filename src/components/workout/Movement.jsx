@@ -13,26 +13,32 @@ const Movement = async () => {
   }
 
   const data = await getData();
-  const dos = data ? data.filter((item) => item.includes("dos")) : [];
+  const dos = data
+    ? data.filter((item) => item.bodyPart.toLowerCase().includes("dos"))
+    : [];
 
   const poitrineEpaule = data
     ? data.filter(
-        (item) => item.includes("Poitrine") || item.includes("Épaules")
+        (item) =>
+          item.bodyPart.toLowerCase().includes("poitrine") ||
+          item.bodyPart.toLowerCase().includes("épaules")
       )
     : [];
 
   const cuisses = data
     ? data.filter(
-        (item) => item.includes("Cuisses") || item.includes("Mollets")
+        (item) =>
+          item.bodyPart.toLowerCase().includes("cuisses") ||
+          item.bodyPart.toLowerCase().includes("mollets")
       )
     : [];
 
   const biceps = data
     ? data.filter(
         (item) =>
-          item.includes("Biceps") ||
-          item.includes("trapezes") ||
-          item.includes("avant-bras")
+          item.bodyPart.toLowerCase().includes("biceps") ||
+          item.bodyPart.toLowerCase().includes("trapezes") ||
+          item.bodyPart.toLowerCase().includes("avant-bras")
       )
     : [];
   return (
