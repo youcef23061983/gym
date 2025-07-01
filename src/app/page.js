@@ -13,6 +13,19 @@ async function getData() {
   }
   return response.json();
 }
+// const db = require("../../lib/db.js");
+
+// async function getData() {
+//   try {
+//     const gallery = await db.galleryImage.findMany({
+//       orderBy: { createdAt: "desc" },
+//     });
+//     return gallery;
+//   } catch (error) {
+//     console.error("Error fetching data:", error.message);
+//     return [];
+//   }
+// }
 export function generateMetadata() {
   const image = "/homepage/frontImg.jpg";
   const title = "Restez Jeune Gym – Fitness, Musculation et Cours de CrossFit";
