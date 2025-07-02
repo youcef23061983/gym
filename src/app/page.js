@@ -5,7 +5,7 @@ import FrontImage from "@/components/frontPage/FrontImage";
 import InstaHero from "@/components/frontPage/InstaHero";
 import PricingPlan from "@/components/frontPage/PricingPlan";
 import { BASE_API_URL } from "@/utils/Url";
-export const dynamic = "force-dynamic"; // Opt out of static generation
+// export const dynamic = "force-dynamic"; // Opt out of static generation
 
 async function getData() {
   const response = await fetch(`${BASE_API_URL}/api/insta`);

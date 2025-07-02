@@ -1,5 +1,5 @@
 const db = require("../../../../lib/db.js");
-export const dynamic = "force-dynamic"; // Opt out of static generation
+// export const dynamic = "force-dynamic"; // Opt out of static generation
 
 export async function GET() {
   try {
