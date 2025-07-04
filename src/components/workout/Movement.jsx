@@ -1,16 +1,30 @@
 import Image from "next/image";
 import { BASE_API_URL } from "@/utils/Url";
+// async function getData() {
+//   const response = await fetch(`${BASE_API_URL}/workout/api`);
+//   if (!response.ok) {
+//     throw new Error("Failed to fetch data");
+//   }
+//   return response.json();
+// }
+const db = require("../../../lib/db.js");
+
 async function getData() {
-  const response = await fetch(`${BASE_API_URL}/workout/api`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
+  try {
+    const exercises = await db.exercise.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    return exercises;
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    return [];
   }
-  return response.json();
 }
+
 const Movement = async () => {
-  if (!BASE_API_URL) {
-    return null;
-  }
+  // if (!BASE_API_URL) {
+  //   return null;
+  // }
 
   const data = await getData();
   const dos = data

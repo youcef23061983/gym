@@ -1,21 +1,25 @@
-import { BASE_API_URL } from "@/utils/Url";
+import db from "../../../../lib/db.js";
+const getProductById = async (id) => {
+  try {
+    const product = await db.product.findUnique({
+      where: { id: parseInt(id) },
+    });
 
-const page = async ({ params: { id } }) => {
-  if (!BASE_API_URL) {
+    return product || null;
+  } catch (error) {
+    console.error("Error fetching product:", error);
     return null;
   }
-  async function getDetailData(id) {
-    const response = await fetch(`${BASE_API_URL}/api/shop/${id}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    return response.json();
-  }
+};
 
-  const product = await getDetailData(id);
+const page = async ({ params }) => {
+  const { id } = params;
+  const product = await getProductById(id);
+
   if (!product) {
-    return null;
+    return <div>Product not found</div>;
   }
+
   return (
     <div>
       <h1>{product.title}</h1>

@@ -7,26 +7,26 @@ import PricingPlan from "@/components/frontPage/PricingPlan";
 import { BASE_API_URL } from "@/utils/Url";
 // export const dynamic = "force-dynamic"; // Opt out of static generation
 
-async function getData() {
-  const response = await fetch(`${BASE_API_URL}/api/insta`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return response.json();
-}
-// const db = require("../../lib/db.js");
-
 // async function getData() {
-//   try {
-//     const gallery = await db.galleryImage.findMany({
-//       orderBy: { createdAt: "desc" },
-//     });
-//     return gallery;
-//   } catch (error) {
-//     console.error("Error fetching data:", error.message);
-//     return [];
+//   const response = await fetch(`${BASE_API_URL}/api/insta`);
+//   if (!response.ok) {
+//     throw new Error("Failed to fetch data");
 //   }
+//   return response.json();
 // }
+const db = require("../../lib/db.js");
+
+async function getData() {
+  try {
+    const gallery = await db.galleryImage.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    return gallery;
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    return [];
+  }
+}
 export function generateMetadata() {
   const image = "/homepage/frontImg.jpg";
   const title = "Restez Jeune Gym – Fitness, Musculation et Cours de CrossFit";
@@ -64,9 +64,9 @@ export function generateMetadata() {
 }
 
 const Home = async () => {
-  if (!BASE_API_URL) {
-    return null;
-  }
+  // if (!BASE_API_URL) {
+  //   return null;
+  // }
   const squareData = await getData();
 
   return (
