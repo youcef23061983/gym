@@ -1,12 +1,5 @@
 import Image from "next/image";
-import { BASE_API_URL } from "@/utils/Url";
-// async function getData() {
-//   const response = await fetch(`${BASE_API_URL}/workout/api`);
-//   if (!response.ok) {
-//     throw new Error("Failed to fetch data");
-//   }
-//   return response.json();
-// }
+
 const db = require("../../../lib/db.js");
 
 async function getData() {
@@ -22,10 +15,6 @@ async function getData() {
 }
 
 const Movement = async () => {
-  // if (!BASE_API_URL) {
-  //   return null;
-  // }
-
   const data = await getData();
   const dos = data
     ? data.filter((item) => item.bodyPart.toLowerCase().includes("dos"))

@@ -6,9 +6,6 @@ import Image from "next/image";
 import "./testimonial.css";
 
 const TestimonilasSlider = () => {
-  if (!BASE_API_URL) {
-    return null;
-  }
   const [testimonials, setTestimonials] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +29,9 @@ const TestimonilasSlider = () => {
     target: container,
     offset: ["start start", "end end"],
   });
-
+  if (!BASE_API_URL) {
+    return null;
+  }
   return (
     <main ref={container}>
       {testimonials?.map((project, i) => {

@@ -59,13 +59,6 @@ export const generateMetadata = () => {
   };
 };
 
-// async function getData() {
-//   const response = await fetch(`${BASE_API_URL}/api/shop`);
-//   if (!response.ok) {
-//     throw new Error("Failed to fetch data");
-//   }
-//   return response.json();
-// }
 async function getData() {
   try {
     const products = await db.product.findMany({
@@ -79,10 +72,6 @@ async function getData() {
 }
 
 const page = async () => {
-  // if (!BASE_API_URL) {
-  //   return null;
-  // }
-
   const isCrawlerRequest = isCrawler();
 
   if (!isCrawlerRequest) {
