@@ -85,6 +85,13 @@ const Navbar = () => {
           <span style={{ fontSize: "15px" }}>
             {session?.user?.name?.slice(0, 6)}...
           </span>
+          <Image
+            src={session?.user?.image}
+            alt="Logo"
+            width={40}
+            height={40}
+            className="rounded"
+          />
 
           <Link className="link" href="/api/auth/signout?callbackUrl=/">
             Logout

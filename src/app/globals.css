@@ -581,7 +581,12 @@ a {
     padding: 1rem 5rem;
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 785px) {
+  .links {
+    padding: 0.8rem 1.8rem;
+  }
+}
+@media screen and (min-width: 865px) {
   h2 {
     font-size: 3.5rem;
     line-height: 1.5;
