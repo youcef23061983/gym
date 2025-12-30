@@ -25,7 +25,6 @@ const Navbar = () => {
   ];
 
   const { data: session } = useSession();
-  console.log("session", session);
 
   useLayoutEffect(() => {
     let isMounted = true;
@@ -87,7 +86,7 @@ const Navbar = () => {
             {session?.user?.name?.slice(0, 6)}...
           </span>
           <Image
-            src={session.user.image ?? "/avatar.png"}
+            src={session.user.image ?? "/avatar.jpg"}
             alt={`${session.user.name}'s avatar`}
             width={40}
             height={40}
