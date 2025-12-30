@@ -87,8 +87,8 @@ const Navbar = () => {
             {session?.user?.name?.slice(0, 6)}...
           </span>
           <Image
-            src={session?.user?.image}
-            alt="Logo"
+            src={session.user.image ?? "/avatar.png"}
+            alt={`${session.user.name}'s avatar`}
             width={40}
             height={40}
             className="rounded"
