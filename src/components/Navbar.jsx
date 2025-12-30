@@ -25,6 +25,7 @@ const Navbar = () => {
   ];
 
   const { data: session } = useSession();
+  console.log("session", session);
 
   useLayoutEffect(() => {
     let isMounted = true;
