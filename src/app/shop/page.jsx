@@ -3,7 +3,6 @@ import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import Product from "@/components/Product";
 import ShopArticle from "@/components/ShopArticle";
-import { BASE_API_URL } from "@/utils/Url";
 import { headers } from "next/headers";
 const db = require("../../../lib/db.js");
 
@@ -25,39 +24,6 @@ function isCrawler() {
     userAgent.toLowerCase().includes(crawler)
   );
 }
-
-export const generateMetadata = () => {
-  return {
-    title: "Shop - Restez Jeune",
-    description:
-      "Découvrez les produits de Restez Jeune, votre salle de sport de choix. Trouvez des équipements, accessoires et vêtements pour vos entraînements.",
-    openGraph: {
-      title: "Shop - Restez Jeune",
-      description:
-        "Découvrez les produits de Restez Jeune, votre salle de sport de choix. Trouvez des équipements, accessoires et vêtements pour vos entraînements.",
-      url: `${BASE_API_URL}/shop`,
-      images: [
-        {
-          url: "/shop.jpg",
-          width: 800,
-          height: 600,
-          alt: "Shop Banner",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Shop - Restez Jeune",
-      description:
-        "Découvrez les produits de Restez Jeune pour améliorer vos performances sportives.",
-      image: "/shop.jpg",
-    },
-    robots: "index, follow",
-    keywords:
-      "shop, gym products, fitness equipment, workout gear, Restez Jeune",
-    author: "Restez Jeune Gym",
-  };
-};
 
 async function getData() {
   try {
