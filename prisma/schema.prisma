@@ -12,19 +12,20 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model GalleryImage {
-  id        Int     @id @default(autoincrement())
-  src       String  
+  id        Int      @id @default(autoincrement())
+  src       String
   createdAt DateTime @default(now())
 }
+
 model Product {
   id        Int      @id @default(autoincrement())
   title     String
   image     String
   price     String
   createdAt DateTime @default(now())
-} 
-
+}
 
 model Testimonial {
   id          Int      @id @default(autoincrement())
@@ -36,19 +37,20 @@ model Testimonial {
 }
 
 model Cardio {
-  id        Int     @id @default(autoincrement())
-  src       String  
+  id        Int      @id @default(autoincrement())
+  src       String
   createdAt DateTime @default(now())
 }
+
 model Exercise {
-  id               Int       @id @default(autoincrement())
+  id               Int      @id @default(autoincrement())
   bodyPart         String
   equipment        String
   gifUrl           String
   name             String
   target           String
-  secondaryMuscles String[] 
-  instructions     String[] 
+  secondaryMuscles String[]
+  instructions     String[]
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
