@@ -73,7 +73,13 @@ const Movement = async ({ data }) => {
                 </p>
               </div>
 
-              <Image src={gifUrl} alt={name} width={500} height={500} />
+              <Image
+                src={gifUrl}
+                alt={name}
+                width={500}
+                height={500}
+                unoptimized
+              />
             </div>
           );
         })}
@@ -120,7 +126,13 @@ const Movement = async ({ data }) => {
                 </p>
               </div>
 
-              <Image src={gifUrl} alt={name} width={500} height={500} />
+              <Image
+                src={gifUrl}
+                alt={name}
+                width={500}
+                height={500}
+                unoptimized
+              />
             </div>
           );
         })}
@@ -167,7 +179,13 @@ const Movement = async ({ data }) => {
                 </p>
               </div>
 
-              <Image src={gifUrl} alt={name} width={500} height={500} />
+              <Image
+                src={gifUrl}
+                alt={name}
+                width={500}
+                height={500}
+                unoptimized
+              />
             </div>
           );
         })}
@@ -214,7 +232,13 @@ const Movement = async ({ data }) => {
                 </p>
               </div>
 
-              <Image src={gifUrl} alt={name} width={500} height={500} />
+              <Image
+                src={gifUrl}
+                alt={name}
+                width={500}
+                height={500}
+                unoptimized
+              />
             </div>
           );
         })}
