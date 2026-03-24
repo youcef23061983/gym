@@ -50,19 +50,11 @@ export const generateMetadata = () => {
     authors: [{ name: "Restez Jeune Gym" }],
   };
 };
-async function getData() {
-  const response = await fetch(`${BASE_API_URL}/testimonials/api`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return response.json();
-}
 
 const Page = async () => {
   if (!BASE_API_URL) {
     return null;
   }
-  const testimonials = await getData();
 
   return (
     <div>
@@ -73,7 +65,7 @@ const Page = async () => {
         <h2 className="frontTitle">Avis d'athlètes et de passionnés</h2>
         <h3 className="frontP">Les résultats parlent d'eux-mêmes.</h3>
       </div>
-      <TestimonialP testimonials={testimonials} />
+      <TestimonialP />
     </div>
   );
 };

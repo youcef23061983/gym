@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { BASE_API_URL } from "@/utils/Url";
-
 const db = require("../../../lib/db.js");
 
 async function getData() {
@@ -14,10 +12,8 @@ async function getData() {
     return [];
   }
 }
+
 const Movement = async () => {
-  if (!BASE_API_URL) {
-    return null;
-  }
   const data = await getData();
   const dos = data
     ? data.filter((item) => item.bodyPart.toLowerCase().includes("dos"))

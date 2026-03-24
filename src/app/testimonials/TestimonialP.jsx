@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import TestimonilasSlider from "./TestimonilasSlider";
 
-const TestimonialP = ({ testimonials }) => {
+const TestimonialP = () => {
   const homeContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,7 +44,7 @@ const TestimonialP = ({ testimonials }) => {
         chaque effort compte et chaque victoire est célébrée.
       </motion.p>
 
-      <TestimonilasSlider testimonials={testimonials} />
+      <TestimonilasSlider />
     </motion.div>
   );
 };
