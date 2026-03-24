@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BASE_API_URL } from "@/utils/Url";
 
 const db = require("../../../lib/db.js");
 
