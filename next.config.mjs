@@ -27,6 +27,10 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
+    // Allow animated images to be used without optimization
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
 
