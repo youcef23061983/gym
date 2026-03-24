@@ -160,16 +160,8 @@ export const generateMetadata = () => {
     category: "fitness",
   };
 };
-async function getData() {
-  const response = await fetch(`${BASE_API_URL}/workout/api`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return response.json();
-}
-const WorkoutPage = async () => {
-  const data = await getData();
 
+const WorkoutPage = async () => {
   // ✅ No authentication - workout page is public marketing content
   // ✅ This helps with SEO and attracting new members
 
@@ -188,7 +180,7 @@ const WorkoutPage = async () => {
       </div>
 
       <WorkoutArticle />
-      <Movement data={data} />
+      <Movement />
 
       {/* Optional: Add a CTA for members-only content */}
       <div className="text-center py-10">

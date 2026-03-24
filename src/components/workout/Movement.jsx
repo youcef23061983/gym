@@ -1,6 +1,20 @@
 import Image from "next/image";
 
-const Movement = async ({ data }) => {
+const db = require("../../../lib/db.js");
+
+async function getData() {
+  try {
+    const exercises = await db.exercise.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    return exercises;
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    return [];
+  }
+}
+const Movement = async () => {
+  const data = await getData();
   const dos = data
     ? data.filter((item) => item.bodyPart.toLowerCase().includes("dos"))
     : [];
