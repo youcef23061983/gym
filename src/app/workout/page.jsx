@@ -162,6 +162,9 @@ export const generateMetadata = () => {
 };
 
 const WorkoutPage = async () => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   // ✅ No authentication - workout page is public marketing content
   // ✅ This helps with SEO and attracting new members
 
