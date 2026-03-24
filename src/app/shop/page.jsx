@@ -21,7 +21,7 @@ function isCrawler() {
   const headersList = headers();
   const userAgent = headersList.get("user-agent") || "";
   return CRAWLER_USER_AGENTS.some((crawler) =>
-    userAgent.toLowerCase().includes(crawler)
+    userAgent.toLowerCase().includes(crawler),
   );
 }
 
@@ -50,7 +50,9 @@ const page = async () => {
   // if (!session) {
   //   redirect("/api/auth/signin?callbackUrl=/shop");
   // }
-
+  if (!BASE_API_URL) {
+    return null;
+  }
   const products = await getData();
 
   return (

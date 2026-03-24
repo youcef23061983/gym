@@ -51,6 +51,9 @@ export function generateMetadata() {
 }
 
 const Home = async () => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   const squareData = await getData();
 
   return (

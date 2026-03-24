@@ -59,6 +59,9 @@ async function getData() {
 }
 
 const Page = async () => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   const testimonials = await getData();
 
   return (

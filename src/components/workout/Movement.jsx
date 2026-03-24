@@ -14,6 +14,9 @@ async function getData() {
   }
 }
 const Movement = async () => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   const data = await getData();
   const dos = data
     ? data.filter((item) => item.bodyPart.toLowerCase().includes("dos"))
