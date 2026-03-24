@@ -1,29 +1,11 @@
 "use client";
 import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { BASE_API_URL } from "@/utils/Url";
 import Image from "next/image";
 import "./testimonial.css";
 
-const TestimonilasSlider = () => {
-  const [testimonials, setTestimonials] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`${BASE_API_URL}/testimonials/api`);
-
-        if (!res.ok) {
-          throw Error("There is no product data");
-        }
-        const data = await res.json();
-        setTestimonials(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchData();
-  }, []);
-
+const TestimonilasSlider = ({ testimonials }) => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -32,6 +14,7 @@ const TestimonilasSlider = () => {
   if (!BASE_API_URL) {
     return null;
   }
+
   return (
     <main ref={container}>
       {testimonials?.map((project, i) => {

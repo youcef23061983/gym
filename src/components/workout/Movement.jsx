@@ -1,17 +1,12 @@
 import Image from "next/image";
-
-const db = require("../../../lib/db.js");
+import { BASE_API_URL } from "@/utils/Url";
 
 async function getData() {
-  try {
-    const exercises = await db.exercise.findMany({
-      orderBy: { createdAt: "desc" },
-    });
-    return exercises;
-  } catch (error) {
-    console.error("Error fetching data:", error.message);
-    return [];
+  const response = await fetch(`${BASE_API_URL}/workout/api`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
   }
+  return response.json();
 }
 
 const Movement = async () => {
@@ -24,7 +19,7 @@ const Movement = async () => {
     ? data.filter(
         (item) =>
           item.bodyPart.toLowerCase().includes("poitrine") ||
-          item.bodyPart.toLowerCase().includes("épaules")
+          item.bodyPart.toLowerCase().includes("épaules"),
       )
     : [];
 
@@ -32,7 +27,7 @@ const Movement = async () => {
     ? data.filter(
         (item) =>
           item.bodyPart.toLowerCase().includes("cuisses") ||
-          item.bodyPart.toLowerCase().includes("mollets")
+          item.bodyPart.toLowerCase().includes("mollets"),
       )
     : [];
 
@@ -41,7 +36,7 @@ const Movement = async () => {
         (item) =>
           item.bodyPart.toLowerCase().includes("biceps") ||
           item.bodyPart.toLowerCase().includes("trapezes") ||
-          item.bodyPart.toLowerCase().includes("avant-bras")
+          item.bodyPart.toLowerCase().includes("avant-bras"),
       )
     : [];
   return (
