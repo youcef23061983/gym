@@ -10,10 +10,16 @@ const db = require("../../lib/db.js");
 
 async function getData() {
   try {
-    const gallery = await db.galleryImage.findMany({
-      orderBy: { createdAt: "desc" },
-    });
-    return gallery;
+    // const gallery = await db.galleryImage.findMany({
+    //   orderBy: { createdAt: "desc" },
+    // });
+    // return gallery;
+    const gallery = await fetch(`${BASE_API_URL}/api/insta`);
+    if (!gallery.ok) {
+      throw new Error("Failed to fetch gallery images");
+    }
+    const galleryData = await gallery.json();
+    return galleryData;
   } catch (error) {
     console.error("Error fetching data:", error.message);
     return [];
