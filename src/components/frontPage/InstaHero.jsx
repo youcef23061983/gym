@@ -2,7 +2,7 @@ import React from "react";
 import ShuffleGrid from "../ShuffleGrid";
 import Link from "next/link";
 
-const InstaHero = ({ squareData }) => {
+const InstaHero = () => {
   return (
     <section className="w-full px-4 py-12 mx-0 grid grid-cols-1 md:grid-cols-2 items-center gap-3">
       <div className="pricingDiv">
@@ -25,7 +25,7 @@ const InstaHero = ({ squareData }) => {
           REJOIGNEZ-NOUS
         </Link>
       </div>
-      <ShuffleGrid squareData={squareData} />
+      <ShuffleGrid />
     </section>
   );
 };

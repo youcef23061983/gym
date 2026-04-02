@@ -6,25 +6,6 @@ import InstaHero from "@/components/frontPage/InstaHero";
 import PricingPlan from "@/components/frontPage/PricingPlan";
 import { BASE_API_URL } from "@/utils/Url";
 
-const db = require("../../lib/db.js");
-
-async function getData() {
-  try {
-    // const gallery = await db.galleryImage.findMany({
-    //   orderBy: { createdAt: "desc" },
-    // });
-    // return gallery;
-    const gallery = await fetch(`${BASE_API_URL}/api/insta`);
-    if (!gallery.ok) {
-      throw new Error("Failed to fetch gallery images");
-    }
-    const galleryData = await gallery.json();
-    return galleryData;
-  } catch (error) {
-    console.error("Error fetching data:", error.message);
-    return [];
-  }
-}
 export function generateMetadata() {
   const image = "/homepage/frontImg.jpg";
   const title = "Restez Jeune Gym – Fitness, Musculation et Cours de CrossFit";
@@ -65,7 +46,6 @@ const Home = async () => {
   if (!BASE_API_URL) {
     return null;
   }
-  const squareData = await getData();
 
   return (
     <>
@@ -79,7 +59,7 @@ const Home = async () => {
 
       <PricingPlan />
 
-      <InstaHero squareData={squareData} />
+      <InstaHero />
     </>
   );
 };

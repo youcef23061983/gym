@@ -1,11 +1,12 @@
 "use client";
+import { BASE_API_URL } from "@/utils/Url";
 import { motion } from "framer-motion";
 import React, { useEffect, useState, useRef } from "react";
 
-const ShuffleGrid = ({ squareData }) => {
-  console.log(squareData);
-
+const ShuffleGrid = () => {
   const [shuffledData, setShuffledData] = useState([]); // Store raw shuffled data
+  const [squareData, setSquareData] = useState([]);
+
   const timeoutRef = useRef(null);
 
   // Function to shuffle the array
@@ -25,6 +26,25 @@ const ShuffleGrid = ({ squareData }) => {
 
     return array;
   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${BASE_API_URL}/api/insta`);
+        if (!res.ok) {
+          throw new Error("Failed to fetch gallery images");
+        }
+        const data = await res.json();
+        setSquareData(data);
+        setShuffledData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+        setSquareData([]);
+        setShuffledData([]);
+      }
+    };
+    fetchData();
+  }, []);
+  // console.log(shuffledData);
 
   // Shuffle and update the grid every 2 seconds
   useEffect(() => {
