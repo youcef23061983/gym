@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Product from "@/components/Product";
 import ShopArticle from "@/components/ShopArticle";
 import { headers } from "next/headers";
+import { BASE_API_URL } from "@/utils/Url";
 const db = require("../../../lib/db.js");
 
 const CRAWLER_USER_AGENTS = [
@@ -27,9 +28,17 @@ function isCrawler() {
 
 async function getData() {
   try {
-    const products = await db.product.findMany({
-      orderBy: { createdAt: "desc" },
+    // const products = await db.product.findMany({
+    //   orderBy: { createdAt: "desc" },
+    // });
+    // return products;
+    const response = await fetch(`${BASE_API_URL}/api/shop`, {
+      cache: "no-store",
     });
+    if (!response.ok) {
+      throw new Error("Failed to fetch products");
+    }
+    const products = await response.json();
     return products;
   } catch (error) {
     console.error("Error fetching data:", error.message);
@@ -38,14 +47,14 @@ async function getData() {
 }
 
 const page = async () => {
-  const isCrawlerRequest = isCrawler();
+  // const isCrawlerRequest = isCrawler();
 
-  if (!isCrawlerRequest) {
-    const session = await getServerSession(options);
-    if (!session) {
-      redirect("/api/auth/signin?callbackUrl=/shop");
-    }
-  }
+  // if (!isCrawlerRequest) {
+  //   const session = await getServerSession(options);
+  //   if (!session) {
+  //     redirect("/api/auth/signin?callbackUrl=/shop");
+  //   }
+  // }
   // const session = await getServerSession(options);
   // if (!session) {
   //   redirect("/api/auth/signin?callbackUrl=/shop");
