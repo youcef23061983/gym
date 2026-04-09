@@ -1,10 +1,9 @@
-import { getServerSession } from "next-auth";
-import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import Product from "@/components/Product";
 import ShopArticle from "@/components/ShopArticle";
 import { headers } from "next/headers";
-import { BASE_API_URL } from "@/utils/Url";
+import { auth } from "../../../auth.js";
+import { Suspense } from "react";
 const db = require("../../../lib/db.js");
 
 const CRAWLER_USER_AGENTS = [
@@ -18,8 +17,8 @@ const CRAWLER_USER_AGENTS = [
   "twitterbot",
 ];
 
-function isCrawler() {
-  const headersList = headers();
+async function isCrawler() {
+  const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "";
   return CRAWLER_USER_AGENTS.some((crawler) =>
     userAgent.toLowerCase().includes(crawler),
@@ -38,22 +37,16 @@ async function getData() {
   }
 }
 
-const page = async () => {
-  const isCrawlerRequest = isCrawler();
+export default async function ShopPage() {
+  const isCrawlerRequest = await isCrawler();
 
   if (!isCrawlerRequest) {
-    const session = await getServerSession(options);
+    const session = await auth();
     if (!session) {
       redirect("/api/auth/signin?callbackUrl=/shop");
     }
   }
-  // const session = await getServerSession(options);
-  // if (!session) {
-  //   redirect("/api/auth/signin?callbackUrl=/shop");
-  // }
-  if (!BASE_API_URL) {
-    return null;
-  }
+
   const products = await getData();
 
   return (
@@ -66,11 +59,11 @@ const page = async () => {
       <ShopArticle />
       <div className="products">
         {products?.map((product) => (
-          <Product product={product} />
+          <Suspense key={product.id} fallback={<div>Loading...</div>}>
+            <Product key={product.id} product={product} />
+          </Suspense>
         ))}
       </div>
     </div>
   );
-};
-
-export default page;
+}

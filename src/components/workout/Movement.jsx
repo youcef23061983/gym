@@ -2,6 +2,8 @@ import Image from "next/image";
 const db = require("../../../lib/db.js");
 
 async function getData() {
+  "use cache";
+
   try {
     const exercises = await db.exercise.findMany({
       orderBy: { createdAt: "desc" },

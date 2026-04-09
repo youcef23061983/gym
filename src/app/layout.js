@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      <body className="site-wrapper">
+      <body className="site-wrapper" suppressHydrationWarning={true}>
         <AuthProvider>
           <Navbar />
 
