@@ -1,6 +1,7 @@
 import db from "../../../../lib/db.js";
+import { notFound } from "next/navigation";
+import ProductDetailClient from "./ProductDetailClient .jsx";
 
-// Tell Next.js which product IDs to pre-render at build time
 export async function generateStaticParams() {
   try {
     const products = await db.product.findMany({
@@ -12,7 +13,7 @@ export async function generateStaticParams() {
     }));
   } catch (error) {
     console.error("Error generating static params:", error);
-    return []; // Return empty array if no products found
+    return [];
   }
 }
 
@@ -29,20 +30,14 @@ const getProductById = async (id) => {
 };
 
 const page = async ({ params }) => {
-  // In Next.js 15+, params is a Promise that needs to be awaited
   const { id } = await params;
   const product = await getProductById(id);
 
   if (!product) {
-    return <div>Product not found</div>;
+    notFound();
   }
 
-  return (
-    <div>
-      <h1>{product.title}</h1>
-      <h1>{product.price}</h1>
-    </div>
-  );
+  return <ProductDetailClient product={product} />;
 };
 
 export default page;

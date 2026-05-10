@@ -19,12 +19,24 @@ model GalleryImage {
   createdAt DateTime @default(now())
 }
 
+// model Product {
+//   id        Int      @id @default(autoincrement())
+//   title     String
+//   image     String
+//   price     String
+//   createdAt DateTime @default(now())
+// }
 model Product {
-  id        Int      @id @default(autoincrement())
-  title     String
-  image     String
-  price     String
-  createdAt DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  title       String
+  image       String
+  price       String
+  description String? // New field
+  category    String? // New field
+  stock       Int?     @default(0) // New field
+  rating      Float?   @default(0) // New field
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 }
 
 model Testimonial {
