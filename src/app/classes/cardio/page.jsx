@@ -136,7 +136,7 @@ const page = () => {
                 return (
                   <img
                     key={id}
-                    src={`${src}`}
+                    src={src}
                     alt={`Cardio ${id}`}
                     className="img"
                   />

@@ -74,7 +74,7 @@ const Product = ({ product }) => {
         onClick={handleClick}
       />
       <h3 style={{ fontWeight: "400" }}>Nom: {title}</h3>
-      <h3 style={{ fontWeight: "400" }}>Prix: {price}</h3>
+      <h3 style={{ fontWeight: "400" }}>Prix: {price} €</h3>
     </motion.div>
   );
 };

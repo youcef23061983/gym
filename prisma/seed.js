@@ -706,116 +706,445 @@ async function main() {
   //     price: "14 €",
   //   },
   // ];
+  // const Products = [
+  //   {
+  //     id: 1,
+  //     title: "Roue Abdominale",
+  //     image: "/shop/abRoller.jpg",
+  //     price: "20 €",
+  //     description:
+  //       "Transformez votre core avec notre roue abdominale professionnelle. Équipée de mousse ergonomique double densité pour un confort optimal pendant vos séances intensives. La conception à double roue offre une stabilité accrue, parfaite pour les débutants comme pour les athlètes confirmés. Idéale pour sculpter vos abdominaux, renforcer votre sangle abdominale et améliorer votre posture. Livrée avec genouillères de protection incluses et guide d'entraînement gratuit avec 20 exercices progressifs.",
+  //     category: "accessoires",
+  //     rating: 4.7,
+  //     stock: 45,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "aduroRésistance",
+  //     image: "/shop/aduroResistance.jpg",
+  //     price: "18 €",
+  //     description:
+  //       "Set complet de 5 bandes de résistance en latex naturel de qualité médicale. Chaque niveau de résistance (Extra Léger, Léger, Moyen, Fort, Extra Fort) vous permet de progresser à votre rythme. Parfaites pour le Pilates, le yoga, le stretching, la rééducation musculaire et le renforcement fonctionnel. Résistance testée jusqu'à 5000 étirements. Inclus : sac de transport et accès à une librairie vidéo exclusive de 30 exercices. Anti-dérapant et facile à nettoyer.",
+  //     category: "accessoires",
+  //     rating: 4.5,
+  //     stock: 120,
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Tapis de sol fitness",
+  //     image: "/shop/carpet.jpg",
+  //     price: "17 €",
+  //     description:
+  //       "Tapis de sport haute performance en mousse NBR de 10mm d'épaisseur. La technologie cellulaire fermée rend ce tapis imperméable et facile à nettoyer - dites adieu à la transpiration qui s'infiltre ! Surface antidérapante double face qui reste stable sur tous les sols (carrelage, parquet, béton). Idéal pour le yoga, le Pilates, les abdominaux, les pompes et les étirements. Taille généreuse 183cm x 61cm. Livré avec sangle de transport et guide d'exercices illustré. Certification anti-bactérienne et sans phtalates.",
+  //     category: "tapis",
+  //     rating: 4.9,
+  //     stock: 30,
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "Rouleau en mousse",
+  //     image: "/shop/Foam Roller.jpg",
+  //     price: "25 €",
+  //     description:
+  //       "Rouleau de massage professionnel en mousse EVA haute densité (densité 50+). Soulage les douleurs musculaires, accélère la récupération et prévient les blessures. La surface texturée à picots moyens offre un massage profond ciblé tandis que la zone lisse permet un relâchement plus doux. Idéal pour les fascias, les points de tension dans le dos, les jambes et les bras. Comprend un livre électronique gratuit de 15 techniques d'auto-massage et un accès à 2 ans de streaming d'exercices. Longueur 33cm - parfait pour voyager ou utiliser à la maison.",
+  //     category: "récupération",
+  //     rating: 4.6,
+  //     stock: 25,
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "Shaker",
+  //     image: "/shop/GymFitXShaker.jpg",
+  //     price: "20 €",
+  //     description:
+  //       "Shaker premium de marque GymFitX d'une capacité de 700ml. La bouteille est fabriquée en Tritan™ sans BPA (certifié FDA) - résistant aux chocs, aux odeurs et aux taches. Système de mélange breveté à double grille en acier inoxydable qui élimine 99% des grumeaux en 5 secondes. Bouchon étanche à rotation avec verrouillage de sécurité - zéro fuite garantie ! Compatible lave-vaisselle (bac supérieur). Graduations précises pour liquides et poudres. Inclus : compartiment à poudre amovible et porte-clés de marque. Disponible en 8 couleurs.",
+  //     category: "accessoires",
+  //     rating: 4.8,
+  //     stock: 200,
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "pince musculation",
+  //     image: "/shop/handGrip.jpg",
+  //     price: "2 €",
+  //     description:
+  //       "Pince de musculation réglable avec résistance de 10kg à 40kg. Conçue pour renforcer rapidement la force de préhension, les avant-bras, les doigts et les poignets. Poignées ergonomiques en mousse mémoire de forme avec évacuation de transpiration. Compteur digital intégré pour suivre votre progression (répétitions, temps de contraction, calories brûlées). Idéal pour les grimpeurs, les pratiquants de Jiu-Jitsu brésilien, les golfeurs, les batteurs, et toute personne souhaitant améliorer sa grip strength. Étui de protection inclus et garantie 2 ans.",
+  //     category: "accessoires",
+  //     rating: 4.3,
+  //     stock: 150,
+  //   },
+  //   {
+  //     id: 7,
+  //     title: "kettlebell",
+  //     image: "/shop/kettlebell.jpg",
+  //     price: "24 €",
+  //     description:
+  //       "Kettlebell en fonte grise de qualité professionnelle avec revêtement en vinyle protecteur anti-rouille et anti-bruit. Poids précis calibré à +/- 2% (homologation compétition). Surface antidérapante texturée pour une prise en main sécurisée même avec les mains moites. Fond plat empêchant le roulement, idéal pour les exercices au sol. Parfaite pour : les swings, snatches, arrachés, Turkish get-ups, squats goblet. Couvre-sol inclus pour protéger votre plancher. Garantie à vie contre la casse. Disponible de 4kg à 32kg - celui-ci est 8kg, parfait pour les débutants.",
+  //     category: "haltérophilie",
+  //     rating: 4.8,
+  //     stock: 35,
+  //   },
+  //   {
+  //     id: 8,
+  //     title: "Medicine Ball",
+  //     image: "/shop/mediclaBall.jpg",
+  //     price: "30 €",
+  //     description:
+  //       "Medicine ball à prise renforcée en cuir synthétique ultra-résistant (garanti 500+ chocs). Surface texturée anti-dérapante avec évacuation de transpiration. Poids précis et réparti uniformément à l'intérieur sans grumeaux. Idéal pour les rotations russes, les lancers muraux, les woodchoppers, le gainage, le travail de vitesse et d'agilité. La taille de 30cm de diamètre est parfaite pour les mouvements dynamiques. Rebond contrôlé à 85% - ne rebondit pas dangereusement comme un ballon normal. Poids : 4kg. Inclus : pompe de réparation rapide et housse de transport. Garantie 3 ans.",
+  //     category: "haltérophilie",
+  //     rating: 4.4,
+  //     stock: 20,
+  //   },
+  //   {
+  //     id: 9,
+  //     title: "Montre de sport",
+  //     image: "/shop/sportWatch.jpg",
+  //     price: "34 €",
+  //     description:
+  //       "Montre connectée fitness dernier cri avec écran AMOLED HD 1.4' tactile et 25 jours d'autonomie. Capteurs intégrés : cardiofréquencemètre optique 24h/24, oxymètre de pouls (SpO2), accéléromètre 3 axes, gyroscope, altimètre barométrique, thermomètre. Suit 30+ modes sportifs : course, vélo, natation (étanche 5ATM), musculation, yoga, HIIT, etc. GPS et GLONASS intégrés - pas besoin d'emmener votre téléphone. Notifications smartphone, contrôle musique, météo, chronomètre. Application compagnon gratuite avec analyses détaillées et coaching IA. Coloris : noir, blanc, rose, bleu. Bracelets interchangeables standard 20mm. Garantie 2 ans.",
+  //     category: "électronique",
+  //     rating: 4.9,
+  //     stock: 15,
+  //   },
+  //   {
+  //     id: 10,
+  //     title: "Ballon de stabilité",
+  //     image: "/shop/stabilityBall.jpg",
+  //     price: "14 €",
+  //     description:
+  //       "Ballon de stabilité anti-éclatement de qualité professionnelle (résistance jusqu'à 500kg). Fabriqué en PVC sans phtalates, épaissi à 2.5mm avec technologie 'slow deflate' - si percé, le ballon se dégonfle lentement pour éviter les chutes brutales. Surface antidérapante avec micro-texture pour travailler même en transpirant. Idéal pour : abdominaux, gainage, renforcement lombaire, Pilates, rééducation, exercices prénatals, remplacement de chaise de bureau dynamique. Taille : 65cm (adapté aux personnes de 160cm à 180cm). Inclus : pompe double action avec buse, 2 bouchons de rechange, DVD d'exercices, sangle de rangement. Certifié test de charge et garantie 1 an.",
+  //     category: "accessoires",
+  //     rating: 4.6,
+  //     stock: 40,
+  //   },
+  // ];
   const Products = [
     {
-      id: 1,
       title: "Roue Abdominale",
       image: "/shop/abRoller.jpg",
-      price: "20 €",
+      price: 20,
       description:
-        "Transformez votre core avec notre roue abdominale professionnelle. Équipée de mousse ergonomique double densité pour un confort optimal pendant vos séances intensives. La conception à double roue offre une stabilité accrue, parfaite pour les débutants comme pour les athlètes confirmés. Idéale pour sculpter vos abdominaux, renforcer votre sangle abdominale et améliorer votre posture. Livrée avec genouillères de protection incluses et guide d'entraînement gratuit avec 20 exercices progressifs.",
+        "Transformez votre core avec notre roue abdominale professionnelle. Équipée de mousse ergonomique double densité pour un confort optimal pendant vos séances intensives.",
       category: "accessoires",
       rating: 4.7,
       stock: 45,
     },
     {
-      id: 2,
-      title: "aduroRésistance",
+      title: "Bandes de résistance",
       image: "/shop/aduroResistance.jpg",
-      price: "18 €",
+      price: 18,
       description:
-        "Set complet de 5 bandes de résistance en latex naturel de qualité médicale. Chaque niveau de résistance (Extra Léger, Léger, Moyen, Fort, Extra Fort) vous permet de progresser à votre rythme. Parfaites pour le Pilates, le yoga, le stretching, la rééducation musculaire et le renforcement fonctionnel. Résistance testée jusqu'à 5000 étirements. Inclus : sac de transport et accès à une librairie vidéo exclusive de 30 exercices. Anti-dérapant et facile à nettoyer.",
+        "Set complet de 5 bandes de résistance en latex naturel de qualité médicale. Chaque niveau de résistance vous permet de progresser à votre rythme.",
       category: "accessoires",
       rating: 4.5,
       stock: 120,
     },
     {
-      id: 3,
       title: "Tapis de sol fitness",
       image: "/shop/carpet.jpg",
-      price: "17 €",
+      price: 17,
       description:
-        "Tapis de sport haute performance en mousse NBR de 10mm d'épaisseur. La technologie cellulaire fermée rend ce tapis imperméable et facile à nettoyer - dites adieu à la transpiration qui s'infiltre ! Surface antidérapante double face qui reste stable sur tous les sols (carrelage, parquet, béton). Idéal pour le yoga, le Pilates, les abdominaux, les pompes et les étirements. Taille généreuse 183cm x 61cm. Livré avec sangle de transport et guide d'exercices illustré. Certification anti-bactérienne et sans phtalates.",
+        "Tapis de sport haute performance en mousse NBR de 10mm d'épaisseur. Surface antidérapante double face.",
       category: "tapis",
       rating: 4.9,
       stock: 30,
     },
+
     {
-      id: 4,
       title: "Rouleau en mousse",
       image: "/shop/Foam Roller.jpg",
-      price: "25 €",
+      price: 25,
       description:
-        "Rouleau de massage professionnel en mousse EVA haute densité (densité 50+). Soulage les douleurs musculaires, accélère la récupération et prévient les blessures. La surface texturée à picots moyens offre un massage profond ciblé tandis que la zone lisse permet un relâchement plus doux. Idéal pour les fascias, les points de tension dans le dos, les jambes et les bras. Comprend un livre électronique gratuit de 15 techniques d'auto-massage et un accès à 2 ans de streaming d'exercices. Longueur 33cm - parfait pour voyager ou utiliser à la maison.",
+        "Rouleau de massage professionnel en mousse EVA haute densité. Soulage les douleurs musculaires et accélère la récupération.",
       category: "récupération",
       rating: 4.6,
       stock: 25,
     },
+
     {
-      id: 5,
       title: "Shaker",
       image: "/shop/GymFitXShaker.jpg",
-      price: "20 €",
+      price: 20,
       description:
-        "Shaker premium de marque GymFitX d'une capacité de 700ml. La bouteille est fabriquée en Tritan™ sans BPA (certifié FDA) - résistant aux chocs, aux odeurs et aux taches. Système de mélange breveté à double grille en acier inoxydable qui élimine 99% des grumeaux en 5 secondes. Bouchon étanche à rotation avec verrouillage de sécurité - zéro fuite garantie ! Compatible lave-vaisselle (bac supérieur). Graduations précises pour liquides et poudres. Inclus : compartiment à poudre amovible et porte-clés de marque. Disponible en 8 couleurs.",
+        "Shaker premium GymFitX d'une capacité de 700ml avec système de mélange et compartiment à poudre.",
       category: "accessoires",
       rating: 4.8,
       stock: 200,
     },
+
     {
-      id: 6,
-      title: "pince musculation",
+      title: "Pince de musculation",
       image: "/shop/handGrip.jpg",
-      price: "2 €",
+      price: 2,
       description:
-        "Pince de musculation réglable avec résistance de 10kg à 40kg. Conçue pour renforcer rapidement la force de préhension, les avant-bras, les doigts et les poignets. Poignées ergonomiques en mousse mémoire de forme avec évacuation de transpiration. Compteur digital intégré pour suivre votre progression (répétitions, temps de contraction, calories brûlées). Idéal pour les grimpeurs, les pratiquants de Jiu-Jitsu brésilien, les golfeurs, les batteurs, et toute personne souhaitant améliorer sa grip strength. Étui de protection inclus et garantie 2 ans.",
+        "Pince de musculation réglable avec résistance de 10kg à 40kg pour renforcer la force de préhension.",
       category: "accessoires",
       rating: 4.3,
       stock: 150,
     },
+
     {
-      id: 7,
-      title: "kettlebell",
+      title: "Kettlebell",
       image: "/shop/kettlebell.jpg",
-      price: "24 €",
+      price: 24,
       description:
-        "Kettlebell en fonte grise de qualité professionnelle avec revêtement en vinyle protecteur anti-rouille et anti-bruit. Poids précis calibré à +/- 2% (homologation compétition). Surface antidérapante texturée pour une prise en main sécurisée même avec les mains moites. Fond plat empêchant le roulement, idéal pour les exercices au sol. Parfaite pour : les swings, snatches, arrachés, Turkish get-ups, squats goblet. Couvre-sol inclus pour protéger votre plancher. Garantie à vie contre la casse. Disponible de 4kg à 32kg - celui-ci est 8kg, parfait pour les débutants.",
+        "Kettlebell en fonte avec revêtement protecteur. Idéale pour les swings, squats, snatches et Turkish get-ups.",
       category: "haltérophilie",
       rating: 4.8,
       stock: 35,
     },
+
     {
-      id: 8,
       title: "Medicine Ball",
       image: "/shop/mediclaBall.jpg",
-      price: "30 €",
+      price: 30,
       description:
-        "Medicine ball à prise renforcée en cuir synthétique ultra-résistant (garanti 500+ chocs). Surface texturée anti-dérapante avec évacuation de transpiration. Poids précis et réparti uniformément à l'intérieur sans grumeaux. Idéal pour les rotations russes, les lancers muraux, les woodchoppers, le gainage, le travail de vitesse et d'agilité. La taille de 30cm de diamètre est parfaite pour les mouvements dynamiques. Rebond contrôlé à 85% - ne rebondit pas dangereusement comme un ballon normal. Poids : 4kg. Inclus : pompe de réparation rapide et housse de transport. Garantie 3 ans.",
+        "Medicine ball renforcé avec surface texturée antidérapante. Poids de 4kg.",
       category: "haltérophilie",
       rating: 4.4,
       stock: 20,
     },
+
     {
-      id: 9,
       title: "Montre de sport",
       image: "/shop/sportWatch.jpg",
-      price: "34 €",
+      price: 34,
       description:
-        "Montre connectée fitness dernier cri avec écran AMOLED HD 1.4' tactile et 25 jours d'autonomie. Capteurs intégrés : cardiofréquencemètre optique 24h/24, oxymètre de pouls (SpO2), accéléromètre 3 axes, gyroscope, altimètre barométrique, thermomètre. Suit 30+ modes sportifs : course, vélo, natation (étanche 5ATM), musculation, yoga, HIIT, etc. GPS et GLONASS intégrés - pas besoin d'emmener votre téléphone. Notifications smartphone, contrôle musique, météo, chronomètre. Application compagnon gratuite avec analyses détaillées et coaching IA. Coloris : noir, blanc, rose, bleu. Bracelets interchangeables standard 20mm. Garantie 2 ans.",
+        "Montre connectée fitness avec écran AMOLED, suivi sportif, GPS et différents capteurs.",
       category: "électronique",
       rating: 4.9,
       stock: 15,
     },
+
     {
-      id: 10,
       title: "Ballon de stabilité",
       image: "/shop/stabilityBall.jpg",
-      price: "14 €",
+      price: 14,
       description:
-        "Ballon de stabilité anti-éclatement de qualité professionnelle (résistance jusqu'à 500kg). Fabriqué en PVC sans phtalates, épaissi à 2.5mm avec technologie 'slow deflate' - si percé, le ballon se dégonfle lentement pour éviter les chutes brutales. Surface antidérapante avec micro-texture pour travailler même en transpirant. Idéal pour : abdominaux, gainage, renforcement lombaire, Pilates, rééducation, exercices prénatals, remplacement de chaise de bureau dynamique. Taille : 65cm (adapté aux personnes de 160cm à 180cm). Inclus : pompe double action avec buse, 2 bouchons de rechange, DVD d'exercices, sangle de rangement. Certifié test de charge et garantie 1 an.",
+        "Ballon de stabilité professionnel adapté aux abdominaux, au gainage, au Pilates et aux exercices de mobilité.",
       category: "accessoires",
       rating: 4.6,
       stock: 40,
+    },
+
+    // 11
+    {
+      title: "Haltères réglables",
+      image: "/shop/adjustableDumbbells.jpg",
+      price: 45,
+      description:
+        "Paire d'haltères réglables permettant de modifier rapidement la charge selon votre entraînement.",
+      category: "haltérophilie",
+      rating: 4.8,
+      stock: 28,
+    },
+
+    {
+      title: "Corde à sauter professionnelle",
+      image: "/shop/jumpRope.jpg",
+      price: 12,
+      description:
+        "Corde à sauter légère avec câble en acier gainé et poignées ergonomiques.",
+      category: "cardio",
+      rating: 4.7,
+      stock: 85,
+    },
+
+    {
+      title: "Barre de traction",
+      image: "/shop/pullUpBar.jpg",
+      price: 32,
+      description:
+        "Barre de traction multifonction en acier renforcé avec plusieurs positions de prise.",
+      category: "musculation",
+      rating: 4.6,
+      stock: 42,
+    },
+
+    {
+      title: "Banc de musculation pliable",
+      image: "/shop/weightBench.jpg",
+      price: 89,
+      description:
+        "Banc de musculation réglable avec dossier inclinable et structure en acier renforcé.",
+      category: "musculation",
+      rating: 4.8,
+      stock: 12,
+    },
+
+    {
+      title: "Rouleau de massage électrique",
+      image: "/shop/massageGun.jpg",
+      price: 55,
+      description:
+        "Appareil de massage musculaire portable avec plusieurs niveaux d'intensité.",
+      category: "récupération",
+      rating: 4.7,
+      stock: 18,
+    },
+
+    {
+      title: "Disques de glisse",
+      image: "/shop/sliders.jpg",
+      price: 10,
+      description:
+        "Paire de disques de glisse pour exercices de renforcement, mobilité et gainage.",
+      category: "accessoires",
+      rating: 4.5,
+      stock: 65,
+    },
+
+    {
+      title: "Step fitness",
+      image: "/shop/fitnessStep.jpg",
+      price: 28,
+      description:
+        "Step fitness réglable avec surface antidérapante pour cardio et entraînement HIIT.",
+      category: "cardio",
+      rating: 4.6,
+      stock: 25,
+    },
+
+    {
+      title: "Gilet lesté",
+      image: "/shop/weightedVest.jpg",
+      price: 50,
+      description:
+        "Gilet lesté ajustable conçu pour augmenter progressivement l'intensité des exercices.",
+      category: "musculation",
+      rating: 4.7,
+      stock: 20,
+    },
+
+    {
+      title: "Anneaux de gymnastique",
+      image: "/shop/gymnasticRings.jpg",
+      price: 24,
+      description:
+        "Paire d'anneaux de gymnastique avec sangles réglables et boucles métalliques renforcées.",
+      category: "musculation",
+      rating: 4.8,
+      stock: 34,
+    },
+
+    {
+      title: "Sac de sport",
+      image: "/shop/gymBag.jpg",
+      price: 30,
+      description:
+        "Sac de sport spacieux avec compartiment principal et poche séparée pour les chaussures.",
+      category: "accessoires",
+      rating: 4.5,
+      stock: 50,
+    },
+
+    {
+      title: "Gants de musculation",
+      image: "/shop/gymGloves.jpg",
+      price: 15,
+      description:
+        "Gants de musculation avec paume renforcée et zones antidérapantes.",
+      category: "accessoires",
+      rating: 4.4,
+      stock: 75,
+    },
+
+    {
+      title: "Ceinture de musculation",
+      image: "/shop/weightLiftingBelt.jpg",
+      price: 27,
+      description: "Ceinture de musculation renforcée avec fermeture réglable.",
+      category: "haltérophilie",
+      rating: 4.6,
+      stock: 30,
+    },
+
+    {
+      title: "Mini bandes élastiques",
+      image: "/shop/miniBands.jpg",
+      price: 11,
+      description:
+        "Set de cinq mini bandes élastiques avec différents niveaux de résistance.",
+      category: "accessoires",
+      rating: 4.7,
+      stock: 90,
+    },
+
+    {
+      title: "Rameur pliable",
+      image: "/shop/rowingMachine.jpg",
+      price: 299,
+      description:
+        "Rameur compact avec résistance réglable et écran numérique de suivi.",
+      category: "cardio",
+      rating: 4.8,
+      stock: 7,
+    },
+
+    {
+      title: "Vélo d'appartement",
+      image: "/shop/exerciseBike.jpg",
+      price: 220,
+      description:
+        "Vélo d'appartement avec résistance réglable et écran de suivi des performances.",
+      category: "cardio",
+      rating: 4.6,
+      stock: 10,
+    },
+
+    {
+      title: "Disques olympiques",
+      image: "/shop/weightPlates.jpg",
+      price: 65,
+      description:
+        "Disques de musculation avec revêtement protecteur pour entraînement de force.",
+      category: "haltérophilie",
+      rating: 4.8,
+      stock: 22,
+    },
+
+    {
+      title: "Barre olympique",
+      image: "/shop/olympicBar.jpg",
+      price: 120,
+      description:
+        "Barre olympique en acier renforcé avec zones de prise moletées.",
+      category: "haltérophilie",
+      rating: 4.9,
+      stock: 8,
+    },
+
+    {
+      title: "Coussin d'équilibre",
+      image: "/shop/balanceCushion.jpg",
+      price: 22,
+      description:
+        "Coussin d'équilibre permettant de travailler la stabilité et la proprioception.",
+      category: "accessoires",
+      rating: 4.5,
+      stock: 38,
+    },
+
+    {
+      title: "Sac de frappe",
+      image: "/shop/punchingBag.jpg",
+      price: 75,
+      description:
+        "Sac de frappe renforcé avec rembourrage multicouche pour absorber les impacts.",
+      category: "boxe",
+      rating: 4.8,
+      stock: 14,
+    },
+
+    {
+      title: "Poulie de musculation",
+      image: "/shop/cableMachine.jpg",
+      price: 110,
+      description:
+        "Système de poulie compact permettant de réaliser de nombreux exercices.",
+      category: "musculation",
+      rating: 4.6,
+      stock: 9,
     },
   ];
   const testimonials = [

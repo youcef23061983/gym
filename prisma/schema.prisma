@@ -30,7 +30,7 @@ model Product {
   id          Int      @id @default(autoincrement())
   title       String
   image       String
-  price       String
+  price       Float
   description String? // New field
   category    String? // New field
   stock       Int?     @default(0) // New field
