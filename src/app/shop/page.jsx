@@ -79,7 +79,7 @@ import { auth } from "../../../auth.js";
 import { Suspense } from "react";
 import SearchForm from "./SearchForm.jsx.jsx";
 const db = require("../../../lib/db.js");
-
+export const instant = false;
 const CRAWLER_USER_AGENTS = [
   "googlebot",
   "bingbot",
@@ -105,7 +105,9 @@ export default async function ShopPage({ searchParams }) {
   if (!isCrawlerRequest) {
     const session = await auth();
     if (!session) {
-      redirect("/api/auth/signin?callbackUrl=/shop");
+      // uncontrolled auto next-auth v5:
+      // redirect("/api/auth/signin?callbackUrl=/shop");
+      redirect("/login?callbackUrl=/shop");
     }
   }
   const params = await searchParams;
